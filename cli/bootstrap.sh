@@ -57,21 +57,28 @@ if [ ! -f "${KIT_DOCS_DIR}/CONTEXT.md" ] && [ -f "${KIT_ROOT}/templates/kit-docs
   cp "${KIT_ROOT}/templates/kit-docs/CONTEXT.md.example" "${KIT_DOCS_DIR}/CONTEXT.md"
 fi
 
-# 4. Automatically append /kit-docs/ to Target Repo's .gitignore
+# 4. Automatically append AgentC Auto-Generated Resources to Target Repo's .gitignore
 GITIGNORE_PATH="${TARGET_DIR_ABS}/.gitignore"
+cat << 'GITIGNORE_ENTRIES' >> "${GITIGNORE_PATH}.tmp"
+# AgentC Local Runtime Resources & Auto-Generated Artifacts
+/kit-docs/
+/kit-docs/scratch/
+/kit-docs/audits/
+*.log
+.agentc-state.json
+GITIGNORE_ENTRIES
+
 if [ -f "${GITIGNORE_PATH}" ]; then
   if ! grep -q "kit-docs" "${GITIGNORE_PATH}"; then
     echo "" >> "${GITIGNORE_PATH}"
-    echo "# AgentC Local Runtime Resources" >> "${GITIGNORE_PATH}"
-    echo "/kit-docs/" >> "${GITIGNORE_PATH}"
-    echo "✅ Appended /kit-docs/ to .gitignore"
+    cat "${GITIGNORE_PATH}.tmp" >> "${GITIGNORE_PATH}"
+    echo "✅ Appended AgentC Runtime Resources to .gitignore"
   fi
+  rm -f "${GITIGNORE_PATH}.tmp"
 else
-  cat << GITIGNORE > "${GITIGNORE_PATH}"
-# AgentC Local Runtime Resources
-/kit-docs/
-GITIGNORE
-  echo "✅ Created .gitignore with /kit-docs/"
+  cat "${GITIGNORE_PATH}.tmp" > "${GITIGNORE_PATH}"
+  rm -f "${GITIGNORE_PATH}.tmp"
+  echo "✅ Created .gitignore with AgentC Runtime Resources"
 fi
 
 echo -e "\n🎉 Done! AgentC Kit is now active in ${TARGET_DIR_ABS}"
