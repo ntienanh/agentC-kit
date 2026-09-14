@@ -210,10 +210,48 @@ if [ -z "$SELECTED_RULE" ] || [ "$SELECTED_RULE" = "schema" ]; then
   fi
 fi
 
+# 7. Mandatory Framework Build & Type-Check Verification
+echo -e "${BOLD}${CYAN}▶ Running Mandatory Framework Build & Type-Check...${NC}"
+if [ -f "$TARGET_DIR/package.json" ]; then
+  HAS_BUILD_SCRIPT=$(node -e "const p=require('$TARGET_DIR/package.json');console.log(!!(p.scripts&&p.scripts.build))" 2>/dev/null || echo "false")
+  if [ "$HAS_BUILD_SCRIPT" = "true" ]; then
+    echo -e "${CYAN}Executing 'npm run build' in ${TARGET_DIR}...${NC}"
+    if (cd "$TARGET_DIR" && npm run build >/dev/null 2>&1); then
+      echo -e "${GREEN}✓ [PASS] Mandatory Framework Build: Compilation Succeeded${NC}\n"
+    else
+      echo -e "${RED}✗ [FAIL] Mandatory Framework Build: Compilation Failed ('npm run build' exited with error)${NC}\n"
+      TOTAL_FAILED=$((TOTAL_FAILED + 1))
+    fi
+  else
+    echo -e "${YELLOW}⚠️ [SKIP] No 'build' script found in package.json${NC}\n"
+  fi
+fi
+
+# 8. Mandatory E2E Test Execution (Template-Aware)
+echo -e "${BOLD}${CYAN}▶ Running Mandatory E2E Verification...${NC}"
+if [ -f "$TARGET_DIR/package.json" ]; then
+  HAS_E2E_SCRIPT=$(node -e "const p=require('$TARGET_DIR/package.json');console.log(!!(p.scripts&&(p.scripts['test:e2e']||p.scripts['e2e'])))" 2>/dev/null || echo "false")
+  if [ "$HAS_E2E_SCRIPT" = "true" ]; then
+    E2E_CMD="test:e2e"
+    E2E_EXISTS=$(node -e "const p=require('$TARGET_DIR/package.json');console.log(!!(p.scripts&&p.scripts['test:e2e']))" 2>/dev/null || echo "false")
+    if [ "$E2E_EXISTS" = "false" ]; then E2E_CMD="e2e"; fi
+    
+    echo -e "${CYAN}Executing 'npm run ${E2E_CMD}' in ${TARGET_DIR}...${NC}"
+    if (cd "$TARGET_DIR" && npm run "${E2E_CMD}" >/dev/null 2>&1); then
+      echo -e "${GREEN}✓ [PASS] Mandatory E2E Tests Passed${NC}\n"
+    else
+      echo -e "${RED}✗ [FAIL] Mandatory E2E Tests Failed ('npm run ${E2E_CMD}' exited with error)${NC}\n"
+      TOTAL_FAILED=$((TOTAL_FAILED + 1))
+    fi
+  else
+    echo -e "${YELLOW}⚠️ [SKIP] No E2E test script ('test:e2e' or 'e2e') found in package.json${NC}\n"
+  fi
+fi
+
 echo -e "${BOLD}${CYAN}====================================================${NC}"
 if [ $TOTAL_FAILED -eq 0 ]; then
   echo -e "${GREEN}${BOLD}✓ ALL INVARIANTS PASSED (Exit Code 0)${NC}"
-  echo -e "${GREEN}Architecture is 100% mechanically compliant. Safe for release.${NC}"
+  echo -e "${GREEN}Architecture is 100% mechanically compliant and verified via build/E2E. Safe for release.${NC}"
   if [ "$IS_JSON_OUTPUT" = true ]; then
     echo '{"status":"PASS","violations":0,"exit_code":0}'
   fi
