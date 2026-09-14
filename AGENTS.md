@@ -20,7 +20,7 @@ Gate 0: Spec & Challenge  ──> Gate 1: Contract & DB  ──> Gate 2: Wire-Up
                                                               │
 Gate 4: Pack & Ship       <── Gate 3: Security & Audit <──────┘
 ```
-- **Gate 0 (Spec)**: Socratic PRD (`docs/specs/*.prd.md`) + 5W2H plan challenge (Complexity Score <= 4).
+- **Gate 0 (Spec)**: Socratic PRD (`kit-docs/specs/*.prd.md`) + 5W2H plan challenge (Complexity Score <= 4).
 - **Gate 1 (Contract)**: Canonical DTOs (`@repo/contracts`), DB migrations + deterministic seed data.
 - **Gate 2 (Wire-Up)**: Dual implementation (BE 4-layer + FE 7-zone) verified via live socket/browser E2E. Max 2 retries; 3rd failure escalates to single arbiter.
 - **Gate 3 (Audit)**: SAST, secret leak audit, and actionable remediation patch diffs.

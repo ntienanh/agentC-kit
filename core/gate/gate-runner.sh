@@ -47,8 +47,8 @@ check_gate_preconditions() {
   local gate="$1"
   case "${gate}" in
     1)
-      if ! ls "${KIT_ROOT}/docs/specs/"*.prd.md 2>/dev/null | grep -q .; then
-        echo -e "${RED}Gate 1 precondition FAIL: No PRD found in docs/specs/*.prd.md${NC}"
+      if ! ls "${TARGET_DIR}/kit-docs/specs/"*.prd.md 2>/dev/null | grep -q . && ! ls "${KIT_ROOT}/kit-docs/specs/"*.prd.md 2>/dev/null | grep -q .; then
+        echo -e "${RED}Gate 1 precondition FAIL: No PRD found in kit-docs/specs/*.prd.md${NC}"
         return 1
       fi
       ;;
