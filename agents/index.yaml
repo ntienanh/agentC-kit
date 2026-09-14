@@ -1,0 +1,162 @@
+# AGENTC-V2 SKILL INDEX
+# Machine-readable skill registry for JIT skill discovery.
+# Use with: node tools/skill-matcher.mjs --prompt "<task>" --gate <n>
+# Format: name, gate(s), keywords (BM25 matching), path
+
+version: "2.0"
+skills:
+  - name: pm-discovery
+    gates: [0]
+    keywords: [product, discovery, requirements, prd, spec, user story, gherkin, 5w2h, socratic, outcome, feature request, clarify, ambiguous, stakeholder, vision, grill, grilling, frontier, domain modeling, glossary, context.md, context-map.md, ubiquitous language, bounded context, glossary conflict, sharpen language, active learning, domain rules, cross-reference with code, enrich domain]
+    path: agents/skills/pm-discovery/SKILL.md
+
+  - name: plan-challenge
+    gates: [0]
+    keywords: [plan, challenge, complexity, over-engineering, under-engineering, simplicity, alternative, trade-off, debate, appetite, scope, risk, assumption, question, adr, architecture decision record, decision log]
+    path: agents/skills/plan-challenge/SKILL.md
+
+  - name: pm-watchdog
+    gates: [2]
+    keywords: [watchdog, spec drift, milestone, dto inventory, ui manifest, 5-state, liveness timer, monitoring, progress, deviation, alert]
+    path: agents/skills/pm-watchdog/SKILL.md
+
+  - name: contract-first-design
+    gates: [1]
+    keywords: [contract, dto, interface, dip token, dependency inversion, type, schema, api design, openapi, payload, request, response, validation, class-validator]
+    path: agents/skills/contract-first-design/SKILL.md
+
+  - name: deep-module-architecture
+    gates: [1, 2]
+    keywords: [module, architecture, deep module, interface, abstraction, seam, cohesion, coupling, facade, clean seam, john ousterhout, god class, barrel]
+    path: agents/skills/deep-module-architecture/SKILL.md
+
+  - name: deadlock-arbitration
+    gates: [2, 3]
+    keywords: [deadlock, arbitration, circuit breaker, retry, dispute, conflict, tech lead, ruling, blocked, stuck, ping-pong, veto, escalate]
+    path: agents/skills/deadlock-arbitration/SKILL.md
+
+  - name: diagnosing-bugs
+    gates: [2, 3]
+    keywords: [diagnose, debug, bug, exception, broken, failing, slow, regression, performance regression, flaky, repro, reproduce, hypothesis, instrument, feedback loop, minimal repro]
+    path: agents/skills/diagnosing-bugs/SKILL.md
+
+  - name: design-tokens-and-states
+    gates: [1, 2]
+    keywords: [design token, ui state, loading, empty, error, success, form, 5-state, skeleton, brand palette, color, spacing, typography, ant design, tailwind, figma]
+    path: agents/skills/design-tokens-and-states/SKILL.md
+
+  - name: backend-clean-module
+    gates: [2]
+    keywords: [backend, nestjs, clean architecture, domain, application, infrastructure, presentation, repository, use case, service, entity, orm, typeorm, prisma, dip, module, api]
+    path: agents/skills/backend-clean-module/SKILL.md
+
+  - name: frontend-unified-architecture
+    gates: [2]
+    keywords: [frontend, react, next.js, component, atomic design, tanstack query, zustand, logic hook, feature, page, route, fsd, 7-zone, ui, table, form, antd, vercel, react best practices, waterfall, bundle optimization, next/dynamic, promise.all, composition patterns, compound components, avoid boolean props, children over render props]
+    path: agents/skills/frontend-unified-architecture/SKILL.md
+
+  - name: implement
+    gates: [2]
+    keywords: [implement, implementation, build feature, worker loop, cadence, typecheck, tsc, single test, full test suite, red green refactor, spec to code, commit, dispatch packet]
+    path: agents/skills/implement/SKILL.md
+
+  - name: domain-i18n
+    gates: [1, 2]
+    keywords: [i18n, internationalization, locale, translation, namespace, next-intl, hardcode string, label, text, message, multilingual, en, vi, parity, key]
+    path: agents/skills/domain-i18n/SKILL.md
+
+  - name: db-migration-and-seed
+    gates: [1]
+    keywords: [database, migration, seed, schema, sql, typeorm, prisma, table, column, index, constraint, foreign key, data, deterministic, rollback]
+    path: agents/skills/db-migration-and-seed/SKILL.md
+
+  - name: wireup-e2e-verification
+    gates: [2]
+    keywords: [e2e, end-to-end, wireup, integration, playwright, cypress, browser, socket, http, real server, black-box, test, scenario, verify, wire]
+    path: agents/skills/wireup-e2e-verification/SKILL.md
+
+  - name: spec-engineering-tdd
+    gates: [1]
+    keywords: [tdd, test driven, unit test, spec, co-location, aaa, arrange act assert, vitest, jest, rtl, testing library, pyramid, tier, coverage]
+    path: agents/skills/spec-engineering-tdd/SKILL.md
+
+  - name: context-budgeting
+    gates: [2, 3, 4]
+    keywords: [context, budget, compress, log, error, token, truncate, root cause, stack trace, 20 lines, 2000 tokens, summarize, nén, log compression]
+    path: agents/skills/context-budgeting/SKILL.md
+
+  - name: verification-before-completion
+    gates: [2, 3, 4]
+    keywords: [verify, complete, done, finish, handoff, goal complete, evidence, exit code, fresh run, mechanical, assertion, pass, claim]
+    path: agents/skills/verification-before-completion/SKILL.md
+
+  - name: actionable-security-audit
+    gates: [3]
+    keywords: [security, sast, owasp, vulnerability, secret leak, injection, xss, csrf, auth, rbac, patch, remediation, cve, audit, threat]
+    path: agents/skills/actionable-security-audit/SKILL.md
+
+  - name: devops-lifecycle-and-reaper
+    gates: [0, 4]
+    keywords: [devops, docker, dockerfile, port, zombie, reaper, pre-flight, environment, ci, cd, deploy, container, node, ram, kill, ship]
+    path: agents/skills/devops-lifecycle-and-reaper/SKILL.md
+
+  - name: wireup-review
+    gates: [2, 3]
+    keywords: [ast, code review, dependency, caller, callee, import, export, blast radius, impact, refactor, symbol, graph, mcp, query graph]
+    path: agents/skills/wireup-review/SKILL.md
+
+  - name: code-review
+    gates: [2, 3]
+    keywords: [code review, two-axis, standards, spec, fowler code smells, diff review, pr review, scope creep, missing requirements, review since, parallel review]
+    path: agents/skills/code-review/SKILL.md
+
+  - name: code-refactor
+    gates: [2, 3]
+    keywords: [refactor, restructure, extract, rename, move, clean up, technical debt, dead code, simplify, mcp, review context, minimal diff]
+    path: agents/skills/code-refactor/SKILL.md
+
+  - name: post-mortem-analyzer
+    gates: [2, 3, 4]
+    keywords: [post mortem, retrospective, failure, error, improve, lesson learned, root cause, rule update, skill update, feedback, recurring]
+    path: agents/skills/post-mortem-analyzer/SKILL.md
+
+  - name: skill-intake
+    gates: [0, 1, 2, 3, 4]
+    keywords: [skill intake, add skill, new skill, scale, enhance skill, 5w1h, scorecard, evaluation, filter, gatekeeper, prevent bloat, duplicate, review skill]
+    path: agents/skills/skill-intake/SKILL.md
+
+  - name: product-motion-transitions
+    gates: [2]
+    keywords: [transitions, motion, css animation, micro transition, transitions.dev, motion token, prefers-reduced-motion, animation, smooth-out, bounce, duration, easing, t-card-resize, t-dropdown, t-modal, t-tabs, t-skel, t-toast, t-error-shake, t-badge, t-success-check, ui interaction, end user motion]
+    path: agents/skills/product-motion-transitions/SKILL.md
+
+  - name: clean-code
+    gates: [2, 3]
+    keywords: [clean code, clean, code, uncle bob, robert c martin, meaningful names, small functions, single level of abstraction, slap, zero comments, self documenting, newspaper metaphor, command query separation, cqs, avoid null]
+    path: agents/skills/clean-code/SKILL.md
+
+  - name: web-design-guidelines
+    gates: [1, 2, 3]
+    keywords: [web design guidelines, web design, vercel guidelines, accessibility, a11y, aria label, focus visible, focus ring, forms ux, no paste block, tabular nums, cumulative layout shift, cls, layout thrashing, text wrap balance, empty state, keyboard navigation]
+    path: agents/skills/web-design-guidelines/SKILL.md
+
+  - name: mcp-intake
+    gates: [0, 1, 2, 3, 4]
+    keywords: [mcp intake, mcp server, add mcp, evaluate mcp, mcp scorecard, context bloat, namespace collision, autoapprove, tool routing, model context protocol]
+    path: agents/skills/mcp-intake/SKILL.md
+
+  - name: vercel-composition-patterns
+    gates: [1, 2, 3]
+    keywords: [vercel composition patterns, composition patterns, compound components, slots pattern, aschild, headless ui, anti monolith, component composition, modular components, render props, slot]
+    path: agents/skills/vercel-composition-patterns/SKILL.md
+
+  - name: vercel-react-best-practices
+    gates: [2, 3]
+    keywords: [vercel react best practices, react best practices, waterfall request, eliminate waterfalls, suspense streaming, tree shaking, dynamic import, next/dynamic, useeffect anti pattern, derived state, stable keys, core web vitals, inp optimization]
+    path: agents/skills/vercel-react-best-practices/SKILL.md
+
+  - name: playwright-e2e-testing
+    gates: [2, 4]
+    keywords: [playwright, playwright e2e testing, browser automation, user simulation, e2e test, keyboard accessibility test, focus visible test, visual regression, end user verification]
+    path: agents/skills/playwright-e2e-testing/SKILL.md
+

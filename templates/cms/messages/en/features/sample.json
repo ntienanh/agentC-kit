@@ -1,0 +1,30 @@
+{
+  "title": "Sample CRUD Feature",
+  "description": "Reference template demonstrating Next.js 16 + Ant Design + TanStack Query with Clean Architecture.",
+  "createItem": "Create Item",
+  "searchPlaceholder": "Search sample items...",
+  "showing": "Showing {from}–{to} of {total}",
+  "tableAriaLabel": "Sample Items Table",
+  "createdSuccess": "Sample created successfully",
+  "createFailed": "Failed to create sample",
+  "updatedSuccess": "Sample updated successfully",
+  "updateFailed": "Failed to update sample",
+  "deletedSuccess": "Sample deleted successfully",
+  "deleteFailed": "Failed to delete sample",
+  "deleteConfirm": "Are you sure you want to delete this item?",
+  "columns": {
+    "id": "ID",
+    "name": "Name",
+    "price": "Price ($)",
+    "actions": "Actions"
+  },
+  "form": {
+    "modalTitle": "Create New Sample Item",
+    "name": "Item Name",
+    "nameRequired": "Please enter item name",
+    "namePlaceholder": "e.g. Standard Service",
+    "price": "Price",
+    "priceRequired": "Please enter valid price",
+    "pricePlaceholder": "0.00"
+  }
+}

@@ -1,0 +1,16 @@
+export const USER_MANAGEMENT_ENDPOINTS = {
+  LIST: '/api/v1/users',
+  CREATE: '/api/v1/users',
+  DETAIL: (id: string) => `/api/v1/users/${id}`,
+  UPDATE: (id: string) => `/api/v1/users/${id}`,
+  CHANGE_ROLE: (id: string) => `/api/v1/users/${id}/role`,
+  DELETE: (id: string) => `/api/v1/users/${id}`,
+  RESTORE: (id: string) => `/api/v1/users/${id}/restore`,
+  STORE_ASSIGNMENTS: (id: string) => `/api/v1/users/${id}/store-assignments`,
+  REVOKE_USER_SESSION: (userId: string, jti: string) => `/api/v1/users/${userId}/sessions/${jti}`,
+  FORCE_LOGOUT: '/api/v1/auth/force-logout',
+  SELF_PROFILE: '/api/v1/auth/me',
+  SELF_UPDATE: '/api/v1/users/me',
+  SELF_SESSIONS: '/api/v1/users/me/sessions',
+  REVOKE_SELF_SESSION: (jti: string) => `/api/v1/users/me/sessions/${jti}`,
+} as const;

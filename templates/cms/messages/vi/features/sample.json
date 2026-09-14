@@ -1,0 +1,30 @@
+{
+  "title": "Tính Năng Mẫu CRUD",
+  "description": "Mẫu tham chiếu minh họa Next.js 16 + Ant Design + TanStack Query với Clean Architecture.",
+  "createItem": "Tạo mục mới",
+  "searchPlaceholder": "Tìm kiếm mục mẫu...",
+  "showing": "Hiển thị {from}–{to} trong {total}",
+  "tableAriaLabel": "Bảng danh sách mục mẫu",
+  "createdSuccess": "Tạo mẫu thành công",
+  "createFailed": "Tạo mẫu thất bại",
+  "updatedSuccess": "Cập nhật mẫu thành công",
+  "updateFailed": "Cập nhật mẫu thất bại",
+  "deletedSuccess": "Xóa mẫu thành công",
+  "deleteFailed": "Xóa mẫu thất bại",
+  "deleteConfirm": "Bạn có chắc chắn muốn xóa mục này không?",
+  "columns": {
+    "id": "Mã",
+    "name": "Tên",
+    "price": "Giá ($)",
+    "actions": "Hành động"
+  },
+  "form": {
+    "modalTitle": "Tạo mục mẫu mới",
+    "name": "Tên mục",
+    "nameRequired": "Vui lòng nhập tên mục",
+    "namePlaceholder": "VD: Dịch vụ tiêu chuẩn",
+    "price": "Giá",
+    "priceRequired": "Vui lòng nhập giá hợp lệ",
+    "pricePlaceholder": "0.00"
+  }
+}

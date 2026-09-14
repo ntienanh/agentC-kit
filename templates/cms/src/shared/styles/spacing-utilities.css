@@ -1,0 +1,944 @@
+/**
+ * Spacing Utilities
+ * 
+ * Standardized spacing utility classes based on the design token system.
+ * These utilities provide consistent margin and padding patterns across the application.
+ * 
+ * Token Scale:
+ * - 2xs: 4px  (0.25rem)
+ * - xs:  8px  (0.5rem)
+ * - sm:  12px (0.75rem)
+ * - md:  16px (1rem)
+ * - lg:  24px (1.5rem)
+ * - xl:  32px (2rem)
+ * - 2xl: 48px (3rem)
+ * - section: 40px (2.5rem)
+ */
+
+@layer utilities {
+  /* Margin utilities using design tokens */
+
+  /* All sides margin */
+  .m-2xs {
+    margin: var(--token-spacing-2xs);
+  }
+  .m-xs {
+    margin: var(--token-spacing-xs);
+  }
+  .m-sm {
+    margin: var(--token-spacing-sm);
+  }
+  .m-md {
+    margin: var(--token-spacing-md);
+  }
+  .m-lg {
+    margin: var(--token-spacing-lg);
+  }
+  .m-xl {
+    margin: var(--token-spacing-xl);
+  }
+  .m-2xl {
+    margin: var(--token-spacing-2xl);
+  }
+  .m-section {
+    margin: var(--token-spacing-section);
+  }
+  .m-0 {
+    margin: 0;
+  }
+  .m-auto {
+    margin: auto;
+  }
+
+  /* Horizontal margin (left + right) */
+  .mx-2xs {
+    margin-left: var(--token-spacing-2xs);
+    margin-right: var(--token-spacing-2xs);
+  }
+  .mx-xs {
+    margin-left: var(--token-spacing-xs);
+    margin-right: var(--token-spacing-xs);
+  }
+  .mx-sm {
+    margin-left: var(--token-spacing-sm);
+    margin-right: var(--token-spacing-sm);
+  }
+  .mx-md {
+    margin-left: var(--token-spacing-md);
+    margin-right: var(--token-spacing-md);
+  }
+  .mx-lg {
+    margin-left: var(--token-spacing-lg);
+    margin-right: var(--token-spacing-lg);
+  }
+  .mx-xl {
+    margin-left: var(--token-spacing-xl);
+    margin-right: var(--token-spacing-xl);
+  }
+  .mx-2xl {
+    margin-left: var(--token-spacing-2xl);
+    margin-right: var(--token-spacing-2xl);
+  }
+  .mx-section {
+    margin-left: var(--token-spacing-section);
+    margin-right: var(--token-spacing-section);
+  }
+  .mx-0 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Vertical margin (top + bottom) */
+  .my-2xs {
+    margin-top: var(--token-spacing-2xs);
+    margin-bottom: var(--token-spacing-2xs);
+  }
+  .my-xs {
+    margin-top: var(--token-spacing-xs);
+    margin-bottom: var(--token-spacing-xs);
+  }
+  .my-sm {
+    margin-top: var(--token-spacing-sm);
+    margin-bottom: var(--token-spacing-sm);
+  }
+  .my-md {
+    margin-top: var(--token-spacing-md);
+    margin-bottom: var(--token-spacing-md);
+  }
+  .my-lg {
+    margin-top: var(--token-spacing-lg);
+    margin-bottom: var(--token-spacing-lg);
+  }
+  .my-xl {
+    margin-top: var(--token-spacing-xl);
+    margin-bottom: var(--token-spacing-xl);
+  }
+  .my-2xl {
+    margin-top: var(--token-spacing-2xl);
+    margin-bottom: var(--token-spacing-2xl);
+  }
+  .my-section {
+    margin-top: var(--token-spacing-section);
+    margin-bottom: var(--token-spacing-section);
+  }
+  .my-0 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .my-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  /* Individual margin sides */
+  .mt-2xs {
+    margin-top: var(--token-spacing-2xs);
+  }
+  .mt-xs {
+    margin-top: var(--token-spacing-xs);
+  }
+  .mt-sm {
+    margin-top: var(--token-spacing-sm);
+  }
+  .mt-md {
+    margin-top: var(--token-spacing-md);
+  }
+  .mt-lg {
+    margin-top: var(--token-spacing-lg);
+  }
+  .mt-xl {
+    margin-top: var(--token-spacing-xl);
+  }
+  .mt-2xl {
+    margin-top: var(--token-spacing-2xl);
+  }
+  .mt-section {
+    margin-top: var(--token-spacing-section);
+  }
+  .mt-0 {
+    margin-top: 0;
+  }
+  .mt-auto {
+    margin-top: auto;
+  }
+
+  .mr-2xs {
+    margin-right: var(--token-spacing-2xs);
+  }
+  .mr-xs {
+    margin-right: var(--token-spacing-xs);
+  }
+  .mr-sm {
+    margin-right: var(--token-spacing-sm);
+  }
+  .mr-md {
+    margin-right: var(--token-spacing-md);
+  }
+  .mr-lg {
+    margin-right: var(--token-spacing-lg);
+  }
+  .mr-xl {
+    margin-right: var(--token-spacing-xl);
+  }
+  .mr-2xl {
+    margin-right: var(--token-spacing-2xl);
+  }
+  .mr-section {
+    margin-right: var(--token-spacing-section);
+  }
+  .mr-0 {
+    margin-right: 0;
+  }
+  .mr-auto {
+    margin-right: auto;
+  }
+
+  .mb-2xs {
+    margin-bottom: var(--token-spacing-2xs);
+  }
+  .mb-xs {
+    margin-bottom: var(--token-spacing-xs);
+  }
+  .mb-sm {
+    margin-bottom: var(--token-spacing-sm);
+  }
+  .mb-md {
+    margin-bottom: var(--token-spacing-md);
+  }
+  .mb-lg {
+    margin-bottom: var(--token-spacing-lg);
+  }
+  .mb-xl {
+    margin-bottom: var(--token-spacing-xl);
+  }
+  .mb-2xl {
+    margin-bottom: var(--token-spacing-2xl);
+  }
+  .mb-section {
+    margin-bottom: var(--token-spacing-section);
+  }
+  .mb-0 {
+    margin-bottom: 0;
+  }
+  .mb-auto {
+    margin-bottom: auto;
+  }
+
+  .ml-2xs {
+    margin-left: var(--token-spacing-2xs);
+  }
+  .ml-xs {
+    margin-left: var(--token-spacing-xs);
+  }
+  .ml-sm {
+    margin-left: var(--token-spacing-sm);
+  }
+  .ml-md {
+    margin-left: var(--token-spacing-md);
+  }
+  .ml-lg {
+    margin-left: var(--token-spacing-lg);
+  }
+  .ml-xl {
+    margin-left: var(--token-spacing-xl);
+  }
+  .ml-2xl {
+    margin-left: var(--token-spacing-2xl);
+  }
+  .ml-section {
+    margin-left: var(--token-spacing-section);
+  }
+  .ml-0 {
+    margin-left: 0;
+  }
+  .ml-auto {
+    margin-left: auto;
+  }
+
+  /* Padding utilities using design tokens */
+
+  /* All sides padding */
+  .p-2xs {
+    padding: var(--token-spacing-2xs);
+  }
+  .p-xs {
+    padding: var(--token-spacing-xs);
+  }
+  .p-sm {
+    padding: var(--token-spacing-sm);
+  }
+  .p-md {
+    padding: var(--token-spacing-md);
+  }
+  .p-lg {
+    padding: var(--token-spacing-lg);
+  }
+  .p-xl {
+    padding: var(--token-spacing-xl);
+  }
+  .p-2xl {
+    padding: var(--token-spacing-2xl);
+  }
+  .p-section {
+    padding: var(--token-spacing-section);
+  }
+  .p-0 {
+    padding: 0;
+  }
+
+  /* Horizontal padding (left + right) */
+  .px-2xs {
+    padding-left: var(--token-spacing-2xs);
+    padding-right: var(--token-spacing-2xs);
+  }
+  .px-xs {
+    padding-left: var(--token-spacing-xs);
+    padding-right: var(--token-spacing-xs);
+  }
+  .px-sm {
+    padding-left: var(--token-spacing-sm);
+    padding-right: var(--token-spacing-sm);
+  }
+  .px-md {
+    padding-left: var(--token-spacing-md);
+    padding-right: var(--token-spacing-md);
+  }
+  .px-lg {
+    padding-left: var(--token-spacing-lg);
+    padding-right: var(--token-spacing-lg);
+  }
+  .px-xl {
+    padding-left: var(--token-spacing-xl);
+    padding-right: var(--token-spacing-xl);
+  }
+  .px-2xl {
+    padding-left: var(--token-spacing-2xl);
+    padding-right: var(--token-spacing-2xl);
+  }
+  .px-section {
+    padding-left: var(--token-spacing-section);
+    padding-right: var(--token-spacing-section);
+  }
+  .px-0 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Vertical padding (top + bottom) */
+  .py-2xs {
+    padding-top: var(--token-spacing-2xs);
+    padding-bottom: var(--token-spacing-2xs);
+  }
+  .py-xs {
+    padding-top: var(--token-spacing-xs);
+    padding-bottom: var(--token-spacing-xs);
+  }
+  .py-sm {
+    padding-top: var(--token-spacing-sm);
+    padding-bottom: var(--token-spacing-sm);
+  }
+  .py-md {
+    padding-top: var(--token-spacing-md);
+    padding-bottom: var(--token-spacing-md);
+  }
+  .py-lg {
+    padding-top: var(--token-spacing-lg);
+    padding-bottom: var(--token-spacing-lg);
+  }
+  .py-xl {
+    padding-top: var(--token-spacing-xl);
+    padding-bottom: var(--token-spacing-xl);
+  }
+  .py-2xl {
+    padding-top: var(--token-spacing-2xl);
+    padding-bottom: var(--token-spacing-2xl);
+  }
+  .py-section {
+    padding-top: var(--token-spacing-section);
+    padding-bottom: var(--token-spacing-section);
+  }
+  .py-0 {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  /* Individual padding sides */
+  .pt-2xs {
+    padding-top: var(--token-spacing-2xs);
+  }
+  .pt-xs {
+    padding-top: var(--token-spacing-xs);
+  }
+  .pt-sm {
+    padding-top: var(--token-spacing-sm);
+  }
+  .pt-md {
+    padding-top: var(--token-spacing-md);
+  }
+  .pt-lg {
+    padding-top: var(--token-spacing-lg);
+  }
+  .pt-xl {
+    padding-top: var(--token-spacing-xl);
+  }
+  .pt-2xl {
+    padding-top: var(--token-spacing-2xl);
+  }
+  .pt-section {
+    padding-top: var(--token-spacing-section);
+  }
+  .pt-0 {
+    padding-top: 0;
+  }
+
+  .pr-2xs {
+    padding-right: var(--token-spacing-2xs);
+  }
+  .pr-xs {
+    padding-right: var(--token-spacing-xs);
+  }
+  .pr-sm {
+    padding-right: var(--token-spacing-sm);
+  }
+  .pr-md {
+    padding-right: var(--token-spacing-md);
+  }
+  .pr-lg {
+    padding-right: var(--token-spacing-lg);
+  }
+  .pr-xl {
+    padding-right: var(--token-spacing-xl);
+  }
+  .pr-2xl {
+    padding-right: var(--token-spacing-2xl);
+  }
+  .pr-section {
+    padding-right: var(--token-spacing-section);
+  }
+  .pr-0 {
+    padding-right: 0;
+  }
+
+  .pb-2xs {
+    padding-bottom: var(--token-spacing-2xs);
+  }
+  .pb-xs {
+    padding-bottom: var(--token-spacing-xs);
+  }
+  .pb-sm {
+    padding-bottom: var(--token-spacing-sm);
+  }
+  .pb-md {
+    padding-bottom: var(--token-spacing-md);
+  }
+  .pb-lg {
+    padding-bottom: var(--token-spacing-lg);
+  }
+  .pb-xl {
+    padding-bottom: var(--token-spacing-xl);
+  }
+  .pb-2xl {
+    padding-bottom: var(--token-spacing-2xl);
+  }
+  .pb-section {
+    padding-bottom: var(--token-spacing-section);
+  }
+  .pb-0 {
+    padding-bottom: 0;
+  }
+
+  .pl-2xs {
+    padding-left: var(--token-spacing-2xs);
+  }
+  .pl-xs {
+    padding-left: var(--token-spacing-xs);
+  }
+  .pl-sm {
+    padding-left: var(--token-spacing-sm);
+  }
+  .pl-md {
+    padding-left: var(--token-spacing-md);
+  }
+  .pl-lg {
+    padding-left: var(--token-spacing-lg);
+  }
+  .pl-xl {
+    padding-left: var(--token-spacing-xl);
+  }
+  .pl-2xl {
+    padding-left: var(--token-spacing-2xl);
+  }
+  .pl-section {
+    padding-left: var(--token-spacing-section);
+  }
+  .pl-0 {
+    padding-left: 0;
+  }
+
+  /* Gap utilities for flexbox and grid layouts */
+  .gap-2xs {
+    gap: var(--token-spacing-2xs);
+  }
+  .gap-xs {
+    gap: var(--token-spacing-xs);
+  }
+  .gap-sm {
+    gap: var(--token-spacing-sm);
+  }
+  .gap-md {
+    gap: var(--token-spacing-md);
+  }
+  .gap-lg {
+    gap: var(--token-spacing-lg);
+  }
+  .gap-xl {
+    gap: var(--token-spacing-xl);
+  }
+  .gap-2xl {
+    gap: var(--token-spacing-2xl);
+  }
+  .gap-section {
+    gap: var(--token-spacing-section);
+  }
+  .gap-0 {
+    gap: 0;
+  }
+
+  /* Row gap utilities */
+  .gap-y-2xs {
+    row-gap: var(--token-spacing-2xs);
+  }
+  .gap-y-xs {
+    row-gap: var(--token-spacing-xs);
+  }
+  .gap-y-sm {
+    row-gap: var(--token-spacing-sm);
+  }
+  .gap-y-md {
+    row-gap: var(--token-spacing-md);
+  }
+  .gap-y-lg {
+    row-gap: var(--token-spacing-lg);
+  }
+  .gap-y-xl {
+    row-gap: var(--token-spacing-xl);
+  }
+  .gap-y-2xl {
+    row-gap: var(--token-spacing-2xl);
+  }
+  .gap-y-section {
+    row-gap: var(--token-spacing-section);
+  }
+  .gap-y-0 {
+    row-gap: 0;
+  }
+
+  /* Column gap utilities */
+  .gap-x-2xs {
+    column-gap: var(--token-spacing-2xs);
+  }
+  .gap-x-xs {
+    column-gap: var(--token-spacing-xs);
+  }
+  .gap-x-sm {
+    column-gap: var(--token-spacing-sm);
+  }
+  .gap-x-md {
+    column-gap: var(--token-spacing-md);
+  }
+  .gap-x-lg {
+    column-gap: var(--token-spacing-lg);
+  }
+  .gap-x-xl {
+    column-gap: var(--token-spacing-xl);
+  }
+  .gap-x-2xl {
+    column-gap: var(--token-spacing-2xl);
+  }
+  .gap-x-section {
+    column-gap: var(--token-spacing-section);
+  }
+  .gap-x-0 {
+    column-gap: 0;
+  }
+
+  /* Space utilities for child elements (using CSS logical properties) */
+  .space-y-2xs > * + * {
+    margin-top: var(--token-spacing-2xs);
+  }
+  .space-y-xs > * + * {
+    margin-top: var(--token-spacing-xs);
+  }
+  .space-y-sm > * + * {
+    margin-top: var(--token-spacing-sm);
+  }
+  .space-y-md > * + * {
+    margin-top: var(--token-spacing-md);
+  }
+  .space-y-lg > * + * {
+    margin-top: var(--token-spacing-lg);
+  }
+  .space-y-xl > * + * {
+    margin-top: var(--token-spacing-xl);
+  }
+  .space-y-2xl > * + * {
+    margin-top: var(--token-spacing-2xl);
+  }
+  .space-y-section > * + * {
+    margin-top: var(--token-spacing-section);
+  }
+  .space-y-0 > * + * {
+    margin-top: 0;
+  }
+
+  .space-x-2xs > * + * {
+    margin-left: var(--token-spacing-2xs);
+  }
+  .space-x-xs > * + * {
+    margin-left: var(--token-spacing-xs);
+  }
+  .space-x-sm > * + * {
+    margin-left: var(--token-spacing-sm);
+  }
+  .space-x-md > * + * {
+    margin-left: var(--token-spacing-md);
+  }
+  .space-x-lg > * + * {
+    margin-left: var(--token-spacing-lg);
+  }
+  .space-x-xl > * + * {
+    margin-left: var(--token-spacing-xl);
+  }
+  .space-x-2xl > * + * {
+    margin-left: var(--token-spacing-2xl);
+  }
+  .space-x-section > * + * {
+    margin-left: var(--token-spacing-section);
+  }
+  .space-x-0 > * + * {
+    margin-left: 0;
+  }
+}
+
+/**
+ * Layout Pattern Utilities
+ * 
+ * Common layout patterns using the design token spacing system.
+ * These provide consistent spacing for common UI patterns.
+ */
+
+@layer utilities {
+  /* Container patterns */
+  .container-padding {
+    padding-left: var(--token-spacing-md);
+    padding-right: var(--token-spacing-md);
+  }
+
+  .container-padding-lg {
+    padding-left: var(--token-spacing-lg);
+    padding-right: var(--token-spacing-lg);
+  }
+
+  .container-section {
+    padding-top: var(--token-spacing-section);
+    padding-bottom: var(--token-spacing-section);
+  }
+
+  /* Card patterns */
+  .card-padding {
+    padding: var(--token-spacing-lg);
+  }
+
+  .card-padding-sm {
+    padding: var(--token-spacing-md);
+  }
+
+  .card-padding-lg {
+    padding: var(--token-spacing-xl);
+  }
+
+  /* Form patterns */
+  .form-spacing {
+    gap: var(--token-spacing-md);
+  }
+
+  .form-spacing-sm {
+    gap: var(--token-spacing-sm);
+  }
+
+  .form-spacing-lg {
+    gap: var(--token-spacing-lg);
+  }
+
+  .form-field-spacing {
+    margin-bottom: var(--token-spacing-md);
+  }
+
+  .form-field-spacing-sm {
+    margin-bottom: var(--token-spacing-sm);
+  }
+
+  .form-field-spacing-lg {
+    margin-bottom: var(--token-spacing-lg);
+  }
+
+  /* Button group patterns */
+  .button-group-spacing {
+    gap: var(--token-spacing-sm);
+  }
+
+  .button-group-spacing-xs {
+    gap: var(--token-spacing-xs);
+  }
+
+  .button-group-spacing-md {
+    gap: var(--token-spacing-md);
+  }
+
+  /* List patterns */
+  .list-spacing {
+    gap: var(--token-spacing-xs);
+  }
+
+  .list-spacing-sm {
+    gap: var(--token-spacing-2xs);
+  }
+
+  .list-spacing-md {
+    gap: var(--token-spacing-sm);
+  }
+
+  .list-spacing-lg {
+    gap: var(--token-spacing-md);
+  }
+
+  /* Section patterns */
+  .section-spacing {
+    margin-bottom: var(--token-spacing-section);
+  }
+
+  .section-spacing-sm {
+    margin-bottom: var(--token-spacing-xl);
+  }
+
+  .section-spacing-lg {
+    margin-bottom: var(--token-spacing-2xl);
+  }
+
+  /* Header patterns */
+  .header-spacing {
+    padding-top: var(--token-spacing-lg);
+    padding-bottom: var(--token-spacing-lg);
+  }
+
+  .header-spacing-sm {
+    padding-top: var(--token-spacing-md);
+    padding-bottom: var(--token-spacing-md);
+  }
+
+  .header-spacing-lg {
+    padding-top: var(--token-spacing-xl);
+    padding-bottom: var(--token-spacing-xl);
+  }
+
+  /* Content patterns */
+  .content-spacing {
+    gap: var(--token-spacing-lg);
+    padding-bottom: var(--token-spacing-xl);
+  }
+
+  .content-spacing-sm {
+    gap: var(--token-spacing-md);
+    padding-bottom: var(--token-spacing-lg);
+  }
+
+  .content-spacing-lg {
+    gap: var(--token-spacing-xl);
+    padding-bottom: var(--token-spacing-2xl);
+  }
+
+  /* Toolbar patterns */
+  .toolbar-spacing {
+    gap: var(--token-spacing-md);
+    padding: var(--token-spacing-sm) var(--token-spacing-md);
+  }
+
+  .toolbar-spacing-sm {
+    gap: var(--token-spacing-sm);
+    padding: var(--token-spacing-xs) var(--token-spacing-sm);
+  }
+
+  .toolbar-spacing-lg {
+    gap: var(--token-spacing-lg);
+    padding: var(--token-spacing-md) var(--token-spacing-lg);
+  }
+}
+
+/**
+ * Responsive Spacing Utilities
+ * 
+ * Responsive variants for common breakpoints.
+ * These allow different spacing at different screen sizes.
+ */
+
+@layer utilities {
+  /* Tablet responsive spacing (48rem and up) */
+  @media (min-width: 48rem) {
+    .tablet\:m-2xs {
+      margin: var(--token-spacing-2xs);
+    }
+    .tablet\:m-xs {
+      margin: var(--token-spacing-xs);
+    }
+    .tablet\:m-sm {
+      margin: var(--token-spacing-sm);
+    }
+    .tablet\:m-md {
+      margin: var(--token-spacing-md);
+    }
+    .tablet\:m-lg {
+      margin: var(--token-spacing-lg);
+    }
+    .tablet\:m-xl {
+      margin: var(--token-spacing-xl);
+    }
+    .tablet\:m-2xl {
+      margin: var(--token-spacing-2xl);
+    }
+    .tablet\:m-section {
+      margin: var(--token-spacing-section);
+    }
+
+    .tablet\:p-2xs {
+      padding: var(--token-spacing-2xs);
+    }
+    .tablet\:p-xs {
+      padding: var(--token-spacing-xs);
+    }
+    .tablet\:p-sm {
+      padding: var(--token-spacing-sm);
+    }
+    .tablet\:p-md {
+      padding: var(--token-spacing-md);
+    }
+    .tablet\:p-lg {
+      padding: var(--token-spacing-lg);
+    }
+    .tablet\:p-xl {
+      padding: var(--token-spacing-xl);
+    }
+    .tablet\:p-2xl {
+      padding: var(--token-spacing-2xl);
+    }
+    .tablet\:p-section {
+      padding: var(--token-spacing-section);
+    }
+
+    .tablet\:gap-2xs {
+      gap: var(--token-spacing-2xs);
+    }
+    .tablet\:gap-xs {
+      gap: var(--token-spacing-xs);
+    }
+    .tablet\:gap-sm {
+      gap: var(--token-spacing-sm);
+    }
+    .tablet\:gap-md {
+      gap: var(--token-spacing-md);
+    }
+    .tablet\:gap-lg {
+      gap: var(--token-spacing-lg);
+    }
+    .tablet\:gap-xl {
+      gap: var(--token-spacing-xl);
+    }
+    .tablet\:gap-2xl {
+      gap: var(--token-spacing-2xl);
+    }
+    .tablet\:gap-section {
+      gap: var(--token-spacing-section);
+    }
+  }
+
+  /* Desktop responsive spacing (80rem and up) */
+  @media (min-width: 80rem) {
+    .desktop\:m-2xs {
+      margin: var(--token-spacing-2xs);
+    }
+    .desktop\:m-xs {
+      margin: var(--token-spacing-xs);
+    }
+    .desktop\:m-sm {
+      margin: var(--token-spacing-sm);
+    }
+    .desktop\:m-md {
+      margin: var(--token-spacing-md);
+    }
+    .desktop\:m-lg {
+      margin: var(--token-spacing-lg);
+    }
+    .desktop\:m-xl {
+      margin: var(--token-spacing-xl);
+    }
+    .desktop\:m-2xl {
+      margin: var(--token-spacing-2xl);
+    }
+    .desktop\:m-section {
+      margin: var(--token-spacing-section);
+    }
+
+    .desktop\:p-2xs {
+      padding: var(--token-spacing-2xs);
+    }
+    .desktop\:p-xs {
+      padding: var(--token-spacing-xs);
+    }
+    .desktop\:p-sm {
+      padding: var(--token-spacing-sm);
+    }
+    .desktop\:p-md {
+      padding: var(--token-spacing-md);
+    }
+    .desktop\:p-lg {
+      padding: var(--token-spacing-lg);
+    }
+    .desktop\:p-xl {
+      padding: var(--token-spacing-xl);
+    }
+    .desktop\:p-2xl {
+      padding: var(--token-spacing-2xl);
+    }
+    .desktop\:p-section {
+      padding: var(--token-spacing-section);
+    }
+
+    .desktop\:gap-2xs {
+      gap: var(--token-spacing-2xs);
+    }
+    .desktop\:gap-xs {
+      gap: var(--token-spacing-xs);
+    }
+    .desktop\:gap-sm {
+      gap: var(--token-spacing-sm);
+    }
+    .desktop\:gap-md {
+      gap: var(--token-spacing-md);
+    }
+    .desktop\:gap-lg {
+      gap: var(--token-spacing-lg);
+    }
+    .desktop\:gap-xl {
+      gap: var(--token-spacing-xl);
+    }
+    .desktop\:gap-2xl {
+      gap: var(--token-spacing-2xl);
+    }
+    .desktop\:gap-section {
+      gap: var(--token-spacing-section);
+    }
+  }
+}

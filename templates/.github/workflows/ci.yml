@@ -1,0 +1,100 @@
+name: Enterprise Monorepo CI Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality-gates:
+    name: Monorepo Quality Gates & Test Suite
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: starter_template_db
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres_secure_pass
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      NODE_ENV: test
+      CI: true
+      POSTGRES_HOST: localhost
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_secure_pass
+      POSTGRES_DB: starter_template_db
+      DATABASE_URL: postgresql://postgres:postgres_secure_pass@localhost:5432/starter_template_db
+      REDIS_HOST: localhost
+      REDIS_PORT: 6379
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup Node.js 20 & Yarn Berry Cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
+          cache-dependency-path: |
+            yarn.lock
+            templates/yarn.lock
+
+      - name: 1. Install Monorepo Dependencies
+        run: |
+          [ -d "templates" ] && cd templates
+          yarn install --immutable || yarn install
+
+      - name: 2. Architectural Invariants Audit
+        run: |
+          [ -d "templates" ] && cd templates
+          yarn audit:invariants
+
+      - name: 3. Red-Team Anti-Hallucination Trap Audit
+        run: |
+          [ -d "templates" ] && cd templates
+          yarn audit:redteam
+
+      - name: 4. Static Typecheck (Monorepo-wide)
+        run: |
+          [ -d "templates" ] && cd templates
+          yarn typecheck
+
+      - name: 5. Code Quality & Linting
+        run: |
+          [ -d "templates" ] && cd templates
+          yarn lint
+
+      - name: 6. Automated Unit & Integration Tests
+        run: |
+          [ -d "templates" ] && cd templates
+          yarn test

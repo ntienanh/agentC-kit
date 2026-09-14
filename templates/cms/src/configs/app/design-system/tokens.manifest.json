@@ -1,0 +1,583 @@
+{
+  "version": "1.1.0",
+  "description": "Modern Slate design tokens for the CMS Admin application",
+  "colors": {
+    "background": {
+      "tailwind": "background",
+      "cssVar": "--background",
+      "themeVar": "--color-background",
+      "description": "Base application canvas background"
+    },
+    "foreground": {
+      "tailwind": "foreground",
+      "cssVar": "--foreground",
+      "themeVar": "--color-foreground",
+      "description": "Default body text and icon color"
+    },
+    "heading": {
+      "tailwind": "heading",
+      "cssVar": "--heading",
+      "themeVar": "--color-heading",
+      "description": "High-emphasis heading and title color"
+    },
+    "card": {
+      "tailwind": "card",
+      "cssVar": "--card",
+      "themeVar": "--color-card",
+      "description": "Default card and panel surface"
+    },
+    "cardForeground": {
+      "tailwind": "card-foreground",
+      "cssVar": "--card-foreground",
+      "themeVar": "--color-card-foreground",
+      "description": "Text on card surfaces"
+    },
+    "popover": {
+      "tailwind": "popover",
+      "cssVar": "--popover",
+      "themeVar": "--color-popover",
+      "description": "Popover and dropdown surface"
+    },
+    "popoverForeground": {
+      "tailwind": "popover-foreground",
+      "cssVar": "--popover-foreground",
+      "themeVar": "--color-popover-foreground",
+      "description": "Text on popovers and dropdowns"
+    },
+    "primary": {
+      "tailwind": "primary",
+      "cssVar": "--primary",
+      "themeVar": "--color-primary",
+      "description": "Accessible primary action, active state, and link color"
+    },
+    "primaryHover": {
+      "tailwind": "primary-hover",
+      "cssVar": "--primary-hover",
+      "themeVar": "--color-primary-hover",
+      "description": "Accessible primary action hover color"
+    },
+    "primaryForeground": {
+      "tailwind": "primary-foreground",
+      "cssVar": "--primary-foreground",
+      "themeVar": "--color-primary-foreground",
+      "description": "Text/icon color on primary surfaces"
+    },
+    "secondary": {
+      "tailwind": "secondary",
+      "cssVar": "--secondary",
+      "themeVar": "--color-secondary",
+      "description": "Secondary action and selected surface"
+    },
+    "secondaryForeground": {
+      "tailwind": "secondary-foreground",
+      "cssVar": "--secondary-foreground",
+      "themeVar": "--color-secondary-foreground",
+      "description": "Text on secondary surfaces"
+    },
+    "muted": {
+      "tailwind": "muted",
+      "cssVar": "--muted",
+      "themeVar": "--color-muted",
+      "description": "Muted block background"
+    },
+    "mutedForeground": {
+      "tailwind": "muted-foreground",
+      "cssVar": "--muted-foreground",
+      "themeVar": "--color-muted-foreground",
+      "description": "Muted helper and supporting text"
+    },
+    "accent": {
+      "tailwind": "accent",
+      "cssVar": "--accent",
+      "themeVar": "--color-accent",
+      "description": "Soft accent surface for selected and highlighted states"
+    },
+    "accentForeground": {
+      "tailwind": "accent-foreground",
+      "cssVar": "--accent-foreground",
+      "themeVar": "--color-accent-foreground",
+      "description": "Text on accent surfaces"
+    },
+    "destructive": {
+      "tailwind": "destructive",
+      "cssVar": "--destructive",
+      "themeVar": "--color-destructive",
+      "description": "Destructive action color"
+    },
+    "destructiveForeground": {
+      "tailwind": "destructive-foreground",
+      "cssVar": "--destructive-foreground",
+      "themeVar": "--color-destructive-foreground",
+      "description": "Text on destructive surfaces"
+    },
+    "border": {
+      "tailwind": "border",
+      "cssVar": "--border",
+      "themeVar": "--color-border",
+      "description": "Default component border color"
+    },
+    "divider": {
+      "tailwind": "divider",
+      "cssVar": "--divider",
+      "themeVar": "--color-divider",
+      "description": "Subtle divider, table separator, and chart grid color"
+    },
+    "input": {
+      "tailwind": "input",
+      "cssVar": "--input",
+      "themeVar": "--color-input",
+      "description": "Input border/background token"
+    },
+    "ring": {
+      "tailwind": "ring",
+      "cssVar": "--ring",
+      "themeVar": "--color-ring",
+      "description": "Default ring color"
+    },
+    "info": {
+      "tailwind": "info",
+      "cssVar": "--info",
+      "themeVar": "--color-info",
+      "description": "Accessible informational foreground color"
+    },
+    "success": {
+      "tailwind": "success",
+      "cssVar": "--success",
+      "themeVar": "--color-success",
+      "description": "Accessible success foreground color"
+    },
+    "warning": {
+      "tailwind": "warning",
+      "cssVar": "--warning",
+      "themeVar": "--color-warning",
+      "description": "Accessible warning foreground color"
+    },
+    "error": {
+      "tailwind": "error",
+      "cssVar": "--error",
+      "themeVar": "--color-error",
+      "description": "Accessible error foreground color"
+    },
+    "surfaceSubtle": {
+      "tailwind": "surface-subtle",
+      "cssVar": "--surface-subtle",
+      "themeVar": "--color-surface-subtle",
+      "description": "Subtle elevated surface for grouped content"
+    },
+    "surfaceMuted": {
+      "tailwind": "surface-muted",
+      "cssVar": "--surface-muted",
+      "themeVar": "--color-surface-muted",
+      "description": "Muted surface for secondary panels and placeholders"
+    },
+    "textSubtle": {
+      "tailwind": "text-subtle",
+      "cssVar": "--text-subtle",
+      "themeVar": "--color-text-subtle",
+      "description": "Lower-emphasis text color"
+    },
+    "focus": {
+      "tailwind": "focus",
+      "cssVar": "--focus",
+      "themeVar": "--color-focus",
+      "description": "Focus ring and active outline color"
+    },
+    "overlay": {
+      "tailwind": "overlay",
+      "cssVar": "--overlay",
+      "themeVar": "--color-overlay",
+      "description": "Backdrop and overlay color"
+    },
+    "inverseSurface": {
+      "tailwind": "inverse-surface",
+      "cssVar": "--inverse-surface",
+      "themeVar": "--color-inverse-surface",
+      "description": "High-contrast dark surface for floating bars and media previews"
+    },
+    "inverseForeground": {
+      "tailwind": "inverse-foreground",
+      "cssVar": "--inverse-foreground",
+      "themeVar": "--color-inverse-foreground",
+      "description": "Text and icons displayed on inverse surfaces"
+    },
+    "inverseBorder": {
+      "tailwind": "inverse-border",
+      "cssVar": "--inverse-border",
+      "themeVar": "--color-inverse-border",
+      "description": "Subtle border color on inverse surfaces"
+    },
+    "disabled": {
+      "tailwind": "disabled",
+      "cssVar": "--disabled",
+      "themeVar": "--color-disabled",
+      "description": "Disabled control background"
+    },
+    "disabledForeground": {
+      "tailwind": "disabled-foreground",
+      "cssVar": "--disabled-foreground",
+      "themeVar": "--color-disabled-foreground",
+      "description": "Disabled text and icon color"
+    },
+    "infoBg": {
+      "tailwind": "info-bg",
+      "cssVar": "--info-bg",
+      "themeVar": "--color-info-bg",
+      "description": "Soft informational background"
+    },
+    "successBg": {
+      "tailwind": "success-bg",
+      "cssVar": "--success-bg",
+      "themeVar": "--color-success-bg",
+      "description": "Soft success background"
+    },
+    "warningBg": {
+      "tailwind": "warning-bg",
+      "cssVar": "--warning-bg",
+      "themeVar": "--color-warning-bg",
+      "description": "Soft warning background"
+    },
+    "errorBg": {
+      "tailwind": "error-bg",
+      "cssVar": "--error-bg",
+      "themeVar": "--color-error-bg",
+      "description": "Soft error background"
+    }
+  },
+  "radii": {
+    "base": {
+      "runtimeVar": "--token-radius-base",
+      "value": "0.5rem",
+      "px": 8,
+      "description": "Base control radius"
+    },
+    "sm": {
+      "runtimeVar": "--token-radius-sm",
+      "themeVar": "--radius-sm",
+      "value": "0.375rem",
+      "px": 6,
+      "description": "Small radius"
+    },
+    "md": {
+      "runtimeVar": "--token-radius-md",
+      "themeVar": "--radius-md",
+      "value": "0.5rem",
+      "px": 8,
+      "description": "Input and control radius"
+    },
+    "lg": {
+      "runtimeVar": "--token-radius-lg",
+      "themeVar": "--radius-lg",
+      "value": "0.75rem",
+      "px": 12,
+      "description": "Default card and panel radius"
+    },
+    "xl": {
+      "runtimeVar": "--token-radius-xl",
+      "themeVar": "--radius-xl",
+      "value": "1rem",
+      "px": 16,
+      "description": "Large feature surface radius"
+    },
+    "button": {
+      "runtimeVar": "--token-radius-button",
+      "themeVar": "--radius-button",
+      "value": "0.5rem",
+      "px": 8,
+      "description": "Button radius"
+    },
+    "pill": {
+      "runtimeVar": "--token-radius-pill",
+      "themeVar": "--radius-pill",
+      "value": "999px",
+      "px": 999,
+      "description": "Pill radius"
+    }
+  },
+  "spacing": {
+    "2xs": {
+      "runtimeVar": "--token-spacing-2xs",
+      "themeVar": "--spacing-2xs",
+      "value": "0.25rem",
+      "px": 4,
+      "description": "Tightest spacing"
+    },
+    "xs": {
+      "runtimeVar": "--token-spacing-xs",
+      "themeVar": "--spacing-xs",
+      "value": "0.5rem",
+      "px": 8,
+      "description": "Extra small spacing"
+    },
+    "sm": {
+      "runtimeVar": "--token-spacing-sm",
+      "themeVar": "--spacing-sm",
+      "value": "0.75rem",
+      "px": 12,
+      "description": "Small spacing"
+    },
+    "md": {
+      "runtimeVar": "--token-spacing-md",
+      "themeVar": "--spacing-md",
+      "value": "1rem",
+      "px": 16,
+      "description": "Default spacing"
+    },
+    "lg": {
+      "runtimeVar": "--token-spacing-lg",
+      "themeVar": "--spacing-lg",
+      "value": "1.5rem",
+      "px": 24,
+      "description": "Large spacing"
+    },
+    "xl": {
+      "runtimeVar": "--token-spacing-xl",
+      "themeVar": "--spacing-xl",
+      "value": "2rem",
+      "px": 32,
+      "description": "Extra large spacing"
+    },
+    "2xl": {
+      "runtimeVar": "--token-spacing-2xl",
+      "themeVar": "--spacing-2xl",
+      "value": "3rem",
+      "px": 48,
+      "description": "Section spacing"
+    },
+    "section": {
+      "runtimeVar": "--token-spacing-section",
+      "themeVar": "--spacing-section",
+      "value": "2.5rem",
+      "px": 40,
+      "description": "Default section gap"
+    }
+  },
+  "fonts": {
+    "sans": {
+      "runtimeVar": "--token-font-sans",
+      "themeVar": "--font-sans",
+      "value": "Inter, Geist, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "description": "Primary Modern Slate UI font stack"
+    },
+    "serif": {
+      "runtimeVar": "--token-font-serif",
+      "themeVar": "--font-serif",
+      "value": "Inter, Geist, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "description": "Legacy heading alias mapped to the UI sans-serif stack"
+    },
+    "mono": {
+      "runtimeVar": "--token-font-mono",
+      "themeVar": "--font-mono",
+      "value": "'JetBrains Mono', monospace",
+      "description": "Monospace font"
+    }
+  },
+  "typography": {
+    "fontSize": {
+      "xs": {
+        "runtimeVar": "--token-font-size-xs",
+        "themeVar": "--font-size-xs",
+        "value": "0.75rem",
+        "px": 12,
+        "description": "Extra small text (captions, labels)"
+      },
+      "compact": {
+        "runtimeVar": "--token-font-size-compact",
+        "themeVar": "--font-size-compact",
+        "value": "0.8125rem",
+        "px": 13,
+        "description": "Compact supporting text and KPI labels"
+      },
+      "sm": {
+        "runtimeVar": "--token-font-size-sm",
+        "themeVar": "--font-size-sm",
+        "value": "0.875rem",
+        "px": 14,
+        "description": "Small text (standard CMS body and controls)"
+      },
+      "base": {
+        "runtimeVar": "--token-font-size-base",
+        "themeVar": "--font-size-base",
+        "value": "1rem",
+        "px": 16,
+        "description": "Base text size (large body and emphasis)"
+      },
+      "lg": {
+        "runtimeVar": "--token-font-size-lg",
+        "themeVar": "--font-size-lg",
+        "value": "1.125rem",
+        "px": 18,
+        "description": "Large text (emphasis)"
+      },
+      "xl": {
+        "runtimeVar": "--token-font-size-xl",
+        "themeVar": "--font-size-xl",
+        "value": "1.25rem",
+        "px": 20,
+        "description": "Extra large text (subheadings)"
+      },
+      "2xl": {
+        "runtimeVar": "--token-font-size-2xl",
+        "themeVar": "--font-size-2xl",
+        "value": "1.5rem",
+        "px": 24,
+        "description": "2X large text (headings)"
+      },
+      "3xl": {
+        "runtimeVar": "--token-font-size-3xl",
+        "themeVar": "--font-size-3xl",
+        "value": "1.75rem",
+        "px": 28,
+        "description": "3X large text (page titles)"
+      },
+      "4xl": {
+        "runtimeVar": "--token-font-size-4xl",
+        "themeVar": "--font-size-4xl",
+        "value": "2rem",
+        "px": 32,
+        "description": "4X large text (display titles)"
+      }
+    },
+    "lineHeight": {
+      "tight": {
+        "runtimeVar": "--token-line-height-tight",
+        "themeVar": "--line-height-tight",
+        "value": "1.25",
+        "description": "Tight line height (headings)"
+      },
+      "normal": {
+        "runtimeVar": "--token-line-height-normal",
+        "themeVar": "--line-height-normal",
+        "value": "1.5",
+        "description": "Normal line height (body text)"
+      },
+      "relaxed": {
+        "runtimeVar": "--token-line-height-relaxed",
+        "themeVar": "--line-height-relaxed",
+        "value": "1.625",
+        "description": "Relaxed line height for long-form content"
+      }
+    },
+    "fontWeight": {
+      "normal": {
+        "runtimeVar": "--token-font-weight-normal",
+        "themeVar": "--font-weight-normal",
+        "value": "400",
+        "description": "Normal font weight"
+      },
+      "medium": {
+        "runtimeVar": "--token-font-weight-medium",
+        "themeVar": "--font-weight-medium",
+        "value": "500",
+        "description": "Medium font weight (emphasis)"
+      },
+      "semibold": {
+        "runtimeVar": "--token-font-weight-semibold",
+        "themeVar": "--font-weight-semibold",
+        "value": "600",
+        "description": "Semibold font weight (headings)"
+      },
+      "bold": {
+        "runtimeVar": "--token-font-weight-bold",
+        "themeVar": "--font-weight-bold",
+        "value": "700",
+        "description": "Bold font weight (strong emphasis)"
+      }
+    }
+  },
+  "shadows": {
+    "sm": {
+      "runtimeVar": "--token-shadow-sm",
+      "themeVar": "--shadow-sm",
+      "value": "0 1px 2px rgba(15, 23, 42, 0.05)",
+      "description": "Subtle overlay shadow"
+    },
+    "md": {
+      "runtimeVar": "--token-shadow-md",
+      "themeVar": "--shadow-md",
+      "value": "0 8px 24px rgba(15, 23, 42, 0.08)",
+      "description": "Medium overlay shadow"
+    },
+    "card": {
+      "runtimeVar": "--token-shadow-card",
+      "themeVar": "--shadow-card",
+      "value": "0 6px 24px rgba(15, 23, 42, 0.04)",
+      "description": "Subtle card and panel elevation"
+    },
+    "overlay": {
+      "runtimeVar": "--token-shadow-overlay",
+      "themeVar": "--shadow-overlay",
+      "value": "0 20px 48px rgba(15, 23, 42, 0.16)",
+      "description": "Modal and popover depth"
+    },
+    "focus": {
+      "runtimeVar": "--token-shadow-focus",
+      "themeVar": "--shadow-focus",
+      "value": "0 0 0 3px rgba(79, 110, 247, 0.12)",
+      "description": "Focus outline shadow"
+    }
+  },
+  "components": {
+    "modal": {
+      "width": {
+        "sm": {
+          "runtimeVar": "--token-modal-width-sm",
+          "value": "480px",
+          "description": "Small modal width (forms)"
+        },
+        "md": {
+          "runtimeVar": "--token-modal-width-md",
+          "value": "640px",
+          "description": "Medium modal width (standard content)"
+        },
+        "lg": {
+          "runtimeVar": "--token-modal-width-lg",
+          "value": "800px",
+          "description": "Large modal width (complex content)"
+        },
+        "xl": {
+          "runtimeVar": "--token-modal-width-xl",
+          "value": "1024px",
+          "description": "Extra large modal width (detailed views)"
+        }
+      }
+    },
+    "button": {
+      "height": {
+        "sm": {
+          "runtimeVar": "--token-button-height-sm",
+          "value": "32px",
+          "description": "Small button height"
+        },
+        "md": {
+          "runtimeVar": "--token-button-height-md",
+          "value": "40px",
+          "description": "Default button height"
+        },
+        "lg": {
+          "runtimeVar": "--token-button-height-lg",
+          "value": "48px",
+          "description": "Large button height"
+        }
+      }
+    },
+    "input": {
+      "height": {
+        "sm": {
+          "runtimeVar": "--token-input-height-sm",
+          "value": "32px",
+          "description": "Small input height"
+        },
+        "md": {
+          "runtimeVar": "--token-input-height-md",
+          "value": "40px",
+          "description": "Default input height"
+        },
+        "lg": {
+          "runtimeVar": "--token-input-height-lg",
+          "value": "48px",
+          "description": "Large input height"
+        }
+      }
+    }
+  }
+}

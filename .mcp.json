@@ -1,0 +1,30 @@
+{
+  "mcpServers": {
+    "agentc-engine": {
+      "command": "node",
+      "args": ["core/mcp/agentc-server.mjs"],
+      "env": {}
+    },
+    "code-review-graph": {
+      "command": "node",
+      "args": ["core/mcp/code-review-graph.mjs"],
+      "env": {},
+      "autoApprove": [
+        "query_graph_tool",
+        "get_impact_radius",
+        "get_review_context_tool"
+      ]
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"],
+      "env": {
+        "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY:-}"
+      },
+      "autoApprove": [
+        "resolve-library-id",
+        "query-docs"
+      ]
+    }
+  }
+}

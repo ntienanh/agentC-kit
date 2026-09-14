@@ -1,0 +1,22 @@
+{
+  "required": "{field} is required",
+  "min": "{field} must be at least {count}",
+  "max": "{field} must be at most {count}",
+  "minLength": "{field} must have at least {count} characters",
+  "maxLength": "{field} must have at most {count} characters",
+
+  "file": {
+    "maxItems": "Maximum {count} files allowed",
+    "minItems": "At least {count} files required",
+    "invalidType": "Invalid file type",
+    "maxSize": "File size must be less than {size}MB"
+  },
+
+  "array": {
+    "maxItems": "Maximum {count} items allowed",
+    "minItems": "At least {count} items required"
+  },
+
+  "notFound": "{item} not found",
+  "invalid": "Invalid {field}"
+}

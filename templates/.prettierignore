@@ -1,0 +1,8 @@
+.yarn
+.next
+dist
+build
+node_modules
+coverage
+test-results
+*.tsbuildinfo

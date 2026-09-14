@@ -1,0 +1,28 @@
+{
+  "name": "agentc-kit",
+  "version": "0.1.0",
+  "author": {
+    "name": "CrisA"
+  },
+  "description": "AgentC Autonomous Software Engineering Kit Engine",
+  "main": "cli/agentc",
+  "bin": {
+    "agentc": "./cli/agentc",
+    "create-agentc": "./cli/bootstrap.sh"
+  },
+  "scripts": {
+    "agentc": "./cli/agentc",
+    "bootstrap": "./cli/bootstrap.sh",
+    "verify": "./cli/agentc verify",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+  },
+  "files": [
+    "cli",
+    "core",
+    "agents",
+    "docs",
+    "templates",
+    "AGENTS.md",
+    ".mcp.json"
+  ]
+}

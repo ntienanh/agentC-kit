@@ -1,0 +1,47 @@
+export const PERMISSION_SUBJECTS = {
+  USERS: 'users',
+  ROLES: 'roles',
+  PERMISSIONS: 'permissions',
+  MEDIA: 'media',
+  MESSAGES: 'messages',
+  SESSIONS: 'sessions',
+  TENANTS: 'tenants',
+} as const;
+
+export const PERMISSION_ACTIONS = {
+  READ: 'read',
+  CREATE: 'create',
+  UPDATE: 'update',
+  DELETE: 'delete',
+  MANAGE: 'manage',
+  UPLOAD: 'upload',
+  DOWNLOAD: 'download',
+  IMPORT: 'import',
+  EXPORT: 'export',
+  APPROVE: 'approve',
+  REJECT: 'reject',
+  PUBLISH: 'publish',
+  ARCHIVE: 'archive',
+  RESTORE: 'restore',
+  SHARE: 'share',
+  REVOKE: 'revoke',
+} as const;
+
+export const ACTION_COLORS: Record<(typeof PERMISSION_ACTIONS)[keyof typeof PERMISSION_ACTIONS], string> = {
+  [PERMISSION_ACTIONS.READ]: 'blue',
+  [PERMISSION_ACTIONS.CREATE]: 'green',
+  [PERMISSION_ACTIONS.UPDATE]: 'orange',
+  [PERMISSION_ACTIONS.DELETE]: 'red',
+  [PERMISSION_ACTIONS.MANAGE]: 'purple',
+  [PERMISSION_ACTIONS.UPLOAD]: 'cyan',
+  [PERMISSION_ACTIONS.DOWNLOAD]: 'geekblue',
+  [PERMISSION_ACTIONS.IMPORT]: 'gold',
+  [PERMISSION_ACTIONS.EXPORT]: 'lime',
+  [PERMISSION_ACTIONS.APPROVE]: 'success',
+  [PERMISSION_ACTIONS.REJECT]: 'error',
+  [PERMISSION_ACTIONS.PUBLISH]: 'magenta',
+  [PERMISSION_ACTIONS.ARCHIVE]: 'default',
+  [PERMISSION_ACTIONS.RESTORE]: 'processing',
+  [PERMISSION_ACTIONS.SHARE]: 'volcano',
+  [PERMISSION_ACTIONS.REVOKE]: 'red',
+};

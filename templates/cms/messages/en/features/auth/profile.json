@@ -1,0 +1,21 @@
+{
+  "modalTitle": "Profile",
+  "displayName": "Display name",
+  "username": "Username",
+  "email": "Email",
+  "provider": "Provider",
+  "verificationStatus": "Verification status",
+  "verified": "Verified",
+  "unverified": "Unverified",
+  "accountStatus": "Account status",
+  "blocked": "Blocked",
+  "active": "Active",
+  "roles": "Roles",
+  "createdAt": "Created at",
+  "save": "Save",
+  "cancel": "Cancel",
+  "displayNameRequired": "Please enter a display name",
+  "displayNameMin": "Minimum {min} characters",
+  "displayNameMax": "Maximum {max} characters",
+  "displayNamePlaceholder": "Enter display name"
+}

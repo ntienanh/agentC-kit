@@ -1,0 +1,36 @@
+{
+  "appTitle": "Cổng Khách Hàng Doanh Nghiệp",
+  "appDescription": "Cổng Khách Hàng Đa Đối Tác Hiện Đại",
+  "loading": "Đang tải...",
+  "notice": {
+    "badge": "Thông Báo",
+    "message": "Nền tảng doanh nghiệp v2.0 đã hoạt động. Khám phá kiến trúc mô-đun và các tích hợp.",
+    "learnMore": "Tìm Hiểu Thêm"
+  },
+  "nav": {
+    "home": "Trang Chủ",
+    "features": "Tính Năng",
+    "about": "Giới Thiệu",
+    "contact": "Liên Hệ",
+    "login": "Đăng Nhập",
+    "register": "Đăng Ký",
+    "profile": "Hồ Sơ",
+    "booking": "Đặt Lịch Khám"
+  },
+  "footer": {
+    "tagline": "Trải nghiệm quản lý doanh nghiệp hiện đại và bảo mật.",
+    "getStarted": "Bắt Đầu Ngay",
+    "operatingHours": "Giờ Làm Việc",
+    "operatingDays": "Thứ Hai - Thứ Sáu",
+    "operatingTime": "09:00 AM - 06:00 PM EST",
+    "phone": "Điện Thoại",
+    "email": "Email",
+    "headquarters": "Trụ Sở Chính",
+    "headquartersTitle": "Trụ Sở Doanh Nghiệp",
+    "address": "100 Enterprise Way, Suite 400 - San Francisco, CA",
+    "terms": "Điều Khoản & Điều Kiện",
+    "privacy": "Chính Sách Bảo Mật",
+    "faq": "Hỏi Đáp",
+    "copyright": "Cổng Khách Hàng Doanh Nghiệp. Bảo lưu mọi quyền."
+  }
+}

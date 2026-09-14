@@ -1,0 +1,21 @@
+{
+  "modalTitle": "Hồ sơ",
+  "displayName": "Tên hiển thị",
+  "username": "Tên đăng nhập",
+  "email": "Email",
+  "provider": "Nhà cung cấp",
+  "verificationStatus": "Trạng thái xác thực",
+  "verified": "Đã xác thực",
+  "unverified": "Chưa xác thực",
+  "accountStatus": "Trạng thái tài khoản",
+  "blocked": "Đã chặn",
+  "active": "Hoạt động",
+  "roles": "Vai trò",
+  "createdAt": "Ngày tạo",
+  "save": "Lưu",
+  "cancel": "Hủy",
+  "displayNameRequired": "Vui lòng nhập tên hiển thị",
+  "displayNameMin": "Tối thiểu {min} ký tự",
+  "displayNameMax": "Tối đa {max} ký tự",
+  "displayNamePlaceholder": "Nhập tên hiển thị"
+}

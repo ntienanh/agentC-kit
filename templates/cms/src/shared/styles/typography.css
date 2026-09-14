@@ -1,0 +1,197 @@
+/**
+ * Modern Slate typography
+ *
+ * Uses a neutral sans-serif stack with compact, high-contrast hierarchy for
+ * long CMS sessions. The legacy serif variable remains available for existing
+ * utility classes but resolves to the same sans-serif stack.
+ */
+
+:root {
+  --font-sans: var(--token-font-sans);
+  --font-serif: var(--token-font-serif);
+  --font-mono: var(--token-font-mono);
+  --line-height-tight: var(--token-line-height-tight);
+  --line-height-normal: var(--token-line-height-normal);
+  --line-height-relaxed: var(--token-line-height-relaxed);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--token-font-size-sm);
+  font-weight: var(--token-font-weight-normal);
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: var(--token-spacing-sm);
+  color: var(--heading);
+  font-family: var(--font-sans);
+  font-weight: var(--token-font-weight-semibold);
+  letter-spacing: -0.02em;
+  line-height: var(--line-height-tight);
+}
+
+h1 {
+  margin-bottom: var(--token-spacing-md);
+  font-size: var(--token-font-size-3xl);
+  font-weight: var(--token-font-weight-bold);
+}
+
+h2 {
+  font-size: var(--token-font-size-2xl);
+}
+
+h3 {
+  font-size: var(--token-font-size-xl);
+}
+
+h4 {
+  font-size: var(--token-font-size-lg);
+}
+
+h5 {
+  font-size: var(--token-font-size-base);
+}
+
+h6 {
+  font-size: var(--token-font-size-sm);
+}
+
+p {
+  margin-bottom: var(--token-spacing-md);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  border-radius: var(--token-radius-sm);
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+pre {
+  overflow-x: auto;
+  padding: var(--token-spacing-md);
+  border: 1px solid var(--border);
+  border-radius: var(--token-radius-md);
+  background-color: var(--muted);
+  line-height: var(--line-height-normal);
+}
+
+code {
+  padding: 0.125rem 0.25rem;
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  background-color: var(--muted);
+}
+
+blockquote {
+  margin: var(--token-spacing-lg) 0;
+  padding-left: var(--token-spacing-lg);
+  border-left: 3px solid var(--primary);
+  color: var(--text-subtle);
+  font-family: var(--font-sans);
+  font-size: var(--token-font-size-base);
+  line-height: var(--line-height-relaxed);
+}
+
+ul,
+ol {
+  margin-bottom: var(--token-spacing-md);
+  padding-left: var(--token-spacing-lg);
+  line-height: var(--line-height-normal);
+}
+
+li {
+  margin-bottom: var(--token-spacing-xs);
+}
+
+small {
+  font-size: var(--token-font-size-xs);
+  line-height: var(--line-height-normal);
+}
+
+strong,
+b {
+  font-weight: var(--token-font-weight-semibold);
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+.prose {
+  max-width: 720px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: var(--token-font-size-2xl);
+  }
+
+  h2 {
+    font-size: var(--token-font-size-xl);
+  }
+
+  h3 {
+    font-size: var(--token-font-size-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: var(--token-font-size-xl);
+  }
+
+  h2 {
+    font-size: var(--token-font-size-lg);
+  }
+}

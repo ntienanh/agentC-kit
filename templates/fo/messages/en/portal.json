@@ -1,0 +1,33 @@
+{
+  "hero": {
+    "badge": "Next.js 16 + Tailwind CSS 4 + shadcn/ui Starter",
+    "titleLine1": "Modern Client Portal &",
+    "titleLine2": "High-Performance Web Frontend",
+    "description": "A lightweight, responsive, and robust front-office application with BFF (Backend-For-Frontend) route handlers, state management, and pre-configured authentication.",
+    "ctaSignIn": "Sign In to Portal",
+    "ctaCms": "Open Admin CMS"
+  },
+  "features": {
+    "nextjs": {
+      "title": "Next.js 16 App Router",
+      "description": "Server & Client components with streaming SSR, optimized layouts, and instant routing."
+    },
+    "bff": {
+      "title": "BFF API Routes",
+      "description": "Clean proxy route handlers in /api/* that sanitize errors and safeguard backend tokens."
+    },
+    "shadcn": {
+      "title": "shadcn/ui & Zod",
+      "description": "Accessible Radix UI primitives, React Hook Form, and schema validation with Zod."
+    }
+  },
+  "about": {
+    "title": "Enterprise Architecture",
+    "description": "Engineered for high availability and rigorous separation of concerns. Seamlessly integrated with NestJS core backend and Ant Design CMS administrative dashboard."
+  },
+  "contact": {
+    "title": "Need Enterprise Assistance?",
+    "description": "Contact operations at",
+    "orPhone": "or phone"
+  }
+}

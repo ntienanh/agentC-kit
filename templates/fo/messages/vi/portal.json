@@ -1,0 +1,33 @@
+{
+  "hero": {
+    "badge": "Khởi Tạo Với Next.js 16 + Tailwind CSS 4 + shadcn/ui",
+    "titleLine1": "Cổng Khách Hàng Hiện Đại &",
+    "titleLine2": "Giao Diện Web Hiệu Năng Cao",
+    "description": "Ứng dụng front-office gọn nhẹ, linh hoạt và mạnh mẽ với các bộ xử lý BFF (Backend-For-Frontend), quản trị trạng thái và xác thực cấu hình sẵn.",
+    "ctaSignIn": "Đăng Nhập Cổng Thông Tin",
+    "ctaCms": "Mở Trang Quản Trị CMS"
+  },
+  "features": {
+    "nextjs": {
+      "title": "Next.js 16 App Router",
+      "description": "Thành phần Server & Client với streaming SSR, giao diện tối ưu và định tuyến tức thì."
+    },
+    "bff": {
+      "title": "Tuyến API BFF",
+      "description": "Các tuyến proxy sạch trong /api/* giúp khử khuẩn lỗi và bảo vệ mã token backend."
+    },
+    "shadcn": {
+      "title": "shadcn/ui & Zod",
+      "description": "Thư viện Radix UI chuẩn công thái học, React Hook Form và xác thực lược đồ với Zod."
+    }
+  },
+  "about": {
+    "title": "Kiến Trúc Doanh Nghiệp",
+    "description": "Được thiết kế cho tính sẵn sàng cao và phân tách trách nhiệm chặt chẽ. Tích hợp liền mạch với backend NestJS cốt lõi và bảng điều khiển quản trị Ant Design CMS."
+  },
+  "contact": {
+    "title": "Cần Hỗ Trợ Doanh Nghiệp?",
+    "description": "Liên hệ bộ phận vận hành tại",
+    "orPhone": "hoặc điện thoại"
+  }
+}

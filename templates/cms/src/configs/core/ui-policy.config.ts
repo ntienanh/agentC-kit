@@ -1,0 +1,13 @@
+export const DEBOUNCE_SEARCH = 500;
+export const DEFAULT_PAGE_SIZE = 10;
+export const PAGE_SIZE_OPTIONS = [10, 20, 50, 100] as const;
+export const QUERY_DEFAULT_PAGE = 1;
+export const QUERY_VIEW_DEFAULT_PAGE_SIZE = 5;
+export const QUERY_VIEW_PAGE_SIZE_OPTIONS = [5, 10, 20, 50] as const;
+export const FILTER_TAG_MAX_VISIBLE = 10;
+export const QUERY_SELECT_DEBOUNCE_MS = 300;
+export const QUERY_SELECT_DEFAULT_PAGE = QUERY_DEFAULT_PAGE;
+export const QUERY_SELECT_DEFAULT_LIMIT = DEFAULT_PAGE_SIZE;
+export const QUERY_SELECT_SCROLL_THRESHOLD_PX = 5;
+export const DATE_FORMAT = 'YYYY-MM-DD';
+export const DATETIME_FORMAT = 'YYYY-MM-DD HH:mm:ss';

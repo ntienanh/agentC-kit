@@ -1,0 +1,15 @@
+export const APP_HREFS = {
+  HOME: '/',
+  SIGNIN: '/signin',
+  FORGOT_PASSWORD: '/forgot-password',
+  RESET_PASSWORD: '/reset-password',
+  FORBIDDEN: '/403',
+  DASHBOARD: '/dashboard',
+  USERS: '/users',
+  USER_DETAIL: (id: string) => `/users/${id}`,
+  ROLES: '/roles',
+  ROLE_DETAIL: (id: string) => `/roles/${id}`,
+  PERMISSIONS: '/permissions',
+  PROFILE: '/profile',
+  PROFILE_SESSIONS: '/profile/sessions',
+} as const;

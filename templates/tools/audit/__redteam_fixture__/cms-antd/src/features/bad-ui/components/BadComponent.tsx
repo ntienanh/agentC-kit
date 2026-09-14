@@ -1,0 +1,1 @@
+export function Bad() { useEffect(() => { fetch("/api/v1/bad"); }, []); return <div />; }

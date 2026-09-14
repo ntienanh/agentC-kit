@@ -1,0 +1,32 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js, ${capture}.d.ts.map, ${capture}.*.ts, ${capture}_*.js, ${capture}_*.ts, ${capture}.spec.ts, ${capture}.test.ts",
+    "*.tsx": "${capture}.spec.tsx, ${capture}.test.tsx, ${capture}.module.css, ${capture}.module.scss",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, .yarnrc.yml, tsconfig*.json",
+    "next.config.ts": "next-env.d.ts, tailwind.config.ts, postcss.config.mjs, components.json",
+    "docker-compose.yml": "docker-compose.*.yml, Dockerfile*, .dockerignore",
+    "*.contract.ts": "${capture}.contract.spec.ts"
+  }
+}

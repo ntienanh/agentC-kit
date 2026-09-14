@@ -1,0 +1,143 @@
+{
+  "name": "Front-Office Design System Tokens",
+  "version": "1.0.0",
+  "aesthetic": "Enterprise Design System",
+  "engine": "Tailwind CSS v4 & OKLCH",
+  "breakpoints": {
+    "mobile": {
+      "query": "< 768px",
+      "token": "base",
+      "target": "Mobile smartphones (375px - 430px)"
+    },
+    "tablet": {
+      "query": "768px - 1023px",
+      "token": "md",
+      "rem": "48rem",
+      "target": "iPad portrait (768px - 1023px)"
+    },
+    "desktop": {
+      "query": "1024px - 1439px",
+      "token": "lg",
+      "rem": "64rem",
+      "target": "MacBook / Laptops (1024px - 1439px)"
+    },
+    "largeDesktop": {
+      "query": ">= 1440px",
+      "token": "xl",
+      "rem": "90rem",
+      "target": "2K / 4K Displays (>= 1440px)"
+    },
+    "ultraWide": {
+      "query": ">= 1600px",
+      "token": "2xl",
+      "rem": "100rem",
+      "target": "Ultra-wide screens"
+    }
+  },
+  "colorRoles": {
+    "primaryAccent": {
+      "name": "Terracotta Copper",
+      "hex": "#99583E",
+      "hsl": "20 34% 45%",
+      "description": "Primary action triggers, highlights, and icons"
+    },
+    "surfaceBackground": {
+      "name": "Sand Linen",
+      "hex": "#FAF6F0",
+      "hsl": "38 40% 95%",
+      "description": "Main page ambient background"
+    },
+    "cardSurface": {
+      "name": "Warm Rice Paper",
+      "hex": "#FCFAF7",
+      "hsl": "40 40% 98%",
+      "description": "Card and drawer background"
+    },
+    "deepForeground": {
+      "name": "Espresso Charcoal",
+      "hex": "#2B241F",
+      "hsl": "27 22% 16%",
+      "description": "Primary text and heading content"
+    },
+    "mutedText": {
+      "name": "Warm Slate Muted",
+      "hex": "#6A615A",
+      "hsl": "31 13% 40%",
+      "description": "Secondary copy, labels, and metadata"
+    },
+    "borderSubtle": {
+      "name": "Sand Dune Border",
+      "hex": "#D4C8BC",
+      "hsl": "36 25% 79%",
+      "description": "Card boundaries and dividers"
+    }
+  },
+  "typography": {
+    "fonts": {
+      "display": "var(--font-display)",
+      "body": "var(--font-body)",
+      "mono": "var(--font-mono)"
+    },
+    "roles": {
+      "displayHero": {
+        "mobile": "text-3xl (1.875rem)",
+        "tablet": "md:text-5xl (3rem)",
+        "desktop": "lg:text-6xl (3.75rem)",
+        "largeDesktop": "xl:text-7xl (4.5rem)",
+        "leading": "leading-[1.05]",
+        "tracking": "tracking-tight"
+      },
+      "sectionHeading": {
+        "mobile": "text-2xl (1.5rem)",
+        "tablet": "md:text-4xl (2.25rem)",
+        "desktop": "lg:text-5xl (3rem)",
+        "leading": "leading-tight",
+        "tracking": "tracking-tight"
+      },
+      "cardTitle": {
+        "mobile": "text-lg (1.125rem)",
+        "tablet": "md:text-xl (1.25rem)",
+        "leading": "leading-snug",
+        "weight": "font-bold"
+      },
+      "accentEyebrow": {
+        "mobile": "text-[10px]",
+        "tablet": "md:text-xs",
+        "weight": "font-bold",
+        "tracking": "tracking-[0.2em]",
+        "transform": "uppercase"
+      },
+      "bodyCopy": {
+        "mobile": "text-xs",
+        "tablet": "md:text-sm",
+        "leading": "leading-relaxed"
+      }
+    }
+  },
+  "spacing": {
+    "containerMaxWidth": "1440px",
+    "containerGutter": {
+      "mobile": "1.25rem",
+      "tablet": "2rem",
+      "desktop": "3rem",
+      "largeDesktop": "4rem"
+    },
+    "sectionGutter": {
+      "mobile": "3.5rem",
+      "tablet": "4.75rem",
+      "desktop": "5.5rem",
+      "largeDesktop": "6.5rem"
+    }
+  },
+  "elevation": {
+    "glassSubtle": "bg-card/85 backdrop-blur-md border border-border/70 shadow-xs",
+    "glassElevated": "bg-card/90 backdrop-blur-xl border border-accent/30 shadow-md",
+    "solidDropdown": "bg-card backdrop-blur-2xl shadow-xl border border-border/80"
+  },
+  "radii": {
+    "button": "rounded-full",
+    "card": "rounded-2xl md:rounded-3xl",
+    "pill": "rounded-full",
+    "tag": "rounded-md"
+  }
+}

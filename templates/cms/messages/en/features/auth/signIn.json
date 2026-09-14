@@ -1,0 +1,20 @@
+{
+  "title": "Admin Console",
+  "pageKicker": "Secure Access",
+  "pageTitle": "Sign in to Admin Console",
+  "subtitle": "Enter your credentials to access the administrative management platform.",
+  "usernameLabel": "Email address or Username",
+  "usernamePlaceholder": "name@domain.com",
+  "usernameRequired": "Please enter your email address or username.",
+  "passwordLabel": "Password",
+  "passwordPlaceholder": "••••••••••••",
+  "passwordRequired": "Please enter your password.",
+  "rememberMe": "Remember me",
+  "forgotPassword": "Forgot password?",
+  "signInButton": "Sign In",
+  "securityNote": "Role-based access control (RBAC) is enforced upon authentication.",
+  "permissionsChangedWarning": "Your access permissions have been updated. Please sign in again to continue.",
+  "loginSuccess": "Authentication Successful",
+  "loginFailed": "Authentication Failed",
+  "tagline": "Enterprise Back-Office Operations Platform"
+}

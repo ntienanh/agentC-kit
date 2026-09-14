@@ -1,0 +1,17 @@
+export const CACHE_CONFIG = {
+  DEFAULT_TTL: 3600,
+  STALE_TIME: 60000,
+  CACHE_TIME: 300000,
+  REVALIDATE: {
+    SHORT: 60,
+    MEDIUM: 300,
+    LONG: 3600,
+    VERY_LONG: 86400,
+  },
+  QUERY: {
+    STALE_TIME: 60000,
+    CACHE_TIME: 300000,
+    RETRY: 3,
+    RETRY_DELAY: 1000,
+  },
+} as const;

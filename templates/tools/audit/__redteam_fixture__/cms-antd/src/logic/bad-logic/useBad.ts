@@ -1,0 +1,1 @@
+export const useBad = () => useQuery({ queryKey: ["bad-key", 1], queryFn: () => null });

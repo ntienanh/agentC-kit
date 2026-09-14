@@ -1,0 +1,1 @@
+res.send(`<!DOCTYPE html><html><body><div id="root">Fake App</div></body></html>`);

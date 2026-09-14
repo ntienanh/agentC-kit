@@ -1,0 +1,423 @@
+/**
+ * Modern Slate typography utilities
+ *
+ * These semantic roles map to the primitive scale in tokens.manifest.json.
+ * Use a role class for shared UI before reaching for arbitrary text/leading
+ * values in a feature component.
+ */
+
+/* Font Family Utilities */
+.font-sans {
+  font-family: var(--token-font-sans);
+}
+
+.font-serif {
+  font-family: var(--token-font-serif);
+}
+
+.font-mono {
+  font-family: var(--token-font-mono);
+}
+
+/* Font Size Utilities - Based on Design Tokens */
+.text-xs {
+  font-size: var(--token-font-size-xs);
+  line-height: var(--token-line-height-normal);
+}
+
+.text-sm {
+  font-size: var(--token-font-size-sm);
+  line-height: var(--token-line-height-normal);
+}
+
+.text-base {
+  font-size: var(--token-font-size-base);
+  line-height: var(--token-line-height-normal);
+}
+
+.text-lg {
+  font-size: var(--token-font-size-lg);
+  line-height: var(--token-line-height-normal);
+}
+
+.text-xl {
+  font-size: var(--token-font-size-xl);
+  line-height: var(--token-line-height-tight);
+}
+
+.text-2xl {
+  font-size: var(--token-font-size-2xl);
+  line-height: var(--token-line-height-tight);
+}
+
+.text-3xl {
+  font-size: var(--token-font-size-3xl);
+  line-height: var(--token-line-height-tight);
+}
+
+.text-4xl {
+  font-size: var(--token-font-size-4xl);
+  line-height: var(--token-line-height-tight);
+}
+
+/* Font Weight Utilities - Based on Design Tokens */
+.font-normal {
+  font-weight: var(--token-font-weight-normal);
+}
+
+.font-medium {
+  font-weight: var(--token-font-weight-medium);
+}
+
+.font-semibold {
+  font-weight: var(--token-font-weight-semibold);
+}
+
+.font-bold {
+  font-weight: var(--token-font-weight-bold);
+}
+
+/* Line Height Utilities - Based on Design Tokens */
+.leading-tight {
+  line-height: var(--token-line-height-tight);
+}
+
+.leading-normal {
+  line-height: var(--token-line-height-normal);
+}
+
+.leading-relaxed {
+  line-height: var(--token-line-height-relaxed);
+}
+
+/* Typography Hierarchy Classes - Modern Slate Design System */
+.heading-1 {
+  color: var(--heading);
+  font-family: var(--token-font-sans);
+  font-size: var(--token-font-size-3xl);
+  font-weight: var(--token-font-weight-bold);
+  line-height: var(--token-line-height-tight);
+  letter-spacing: -0.02em;
+}
+
+.heading-2 {
+  color: var(--heading);
+  font-family: var(--token-font-sans);
+  font-size: var(--token-font-size-2xl);
+  font-weight: var(--token-font-weight-semibold);
+  line-height: var(--token-line-height-tight);
+  letter-spacing: -0.02em;
+}
+
+.heading-3 {
+  color: var(--heading);
+  font-family: var(--token-font-sans);
+  font-size: var(--token-font-size-xl);
+  font-weight: var(--token-font-weight-semibold);
+  line-height: var(--token-line-height-tight);
+  letter-spacing: -0.01em;
+}
+
+.heading-4 {
+  color: var(--heading);
+  font-family: var(--token-font-sans);
+  font-size: var(--token-font-size-lg);
+  font-weight: var(--token-font-weight-semibold);
+  line-height: var(--token-line-height-tight);
+}
+
+.heading-5 {
+  color: var(--heading);
+  font-family: var(--token-font-sans);
+  font-size: var(--token-font-size-base);
+  font-weight: var(--token-font-weight-semibold);
+  line-height: var(--token-line-height-tight);
+}
+
+.heading-6 {
+  color: var(--heading);
+  font-family: var(--token-font-sans);
+  font-size: var(--token-font-size-sm);
+  font-weight: var(--token-font-weight-semibold);
+  line-height: var(--token-line-height-tight);
+}
+
+/* Body text */
+.body-lg {
+  font-family: var(--token-font-sans);
+  font-size: var(--token-font-size-lg);
+  font-weight: var(--token-font-weight-normal);
+  line-height: var(--token-line-height-relaxed);
+}
+
+.body-base {
+  font-family: var(--token-font-sans);
+  font-size: var(--token-font-size-base);
+  font-weight: var(--token-font-weight-normal);
+  line-height: var(--token-line-height-normal);
+}
+
+.body-sm {
+  font-family: var(--token-font-sans);
+  font-size: var(--token-font-size-sm);
+  font-weight: var(--token-font-weight-normal);
+  line-height: var(--token-line-height-normal);
+}
+
+.body-xs {
+  font-family: var(--token-font-sans);
+  font-size: var(--token-font-size-xs);
+  font-weight: var(--token-font-weight-normal);
+  line-height: var(--token-line-height-normal);
+}
+
+.body-compact {
+  font-family: var(--token-font-sans);
+  font-size: var(--token-font-size-compact);
+  font-weight: var(--token-font-weight-normal);
+  line-height: var(--token-line-height-normal);
+}
+
+/* Supporting text, labels, and metrics */
+.caption {
+  font-family: var(--token-font-sans);
+  font-size: var(--token-font-size-xs);
+  font-weight: var(--token-font-weight-normal);
+  line-height: var(--token-line-height-normal);
+}
+
+.eyebrow {
+  color: var(--text-subtle);
+  font-family: var(--token-font-sans);
+  font-size: var(--token-font-size-xs);
+  font-weight: var(--token-font-weight-medium);
+  line-height: var(--token-line-height-normal);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.label {
+  font-family: var(--token-font-sans);
+  font-size: var(--token-font-size-sm);
+  font-weight: var(--token-font-weight-medium);
+  line-height: var(--token-line-height-normal);
+}
+
+.metric-label {
+  color: var(--muted-foreground);
+  font-family: var(--token-font-sans);
+  font-size: var(--token-font-size-compact);
+  font-weight: var(--token-font-weight-medium);
+  line-height: var(--token-line-height-normal);
+}
+
+.metric-value {
+  color: var(--foreground);
+  font-family: var(--token-font-sans);
+  font-size: var(--token-font-size-3xl);
+  font-weight: var(--token-font-weight-bold);
+  line-height: var(--token-line-height-tight);
+  letter-spacing: -0.02em;
+}
+
+/* Responsive Typography Scaling */
+@media (max-width: 768px) {
+  .heading-1 {
+    font-size: var(--token-font-size-3xl);
+  }
+
+  .heading-2 {
+    font-size: var(--token-font-size-2xl);
+  }
+
+  .heading-3 {
+    font-size: var(--token-font-size-xl);
+  }
+
+  .heading-4 {
+    font-size: var(--token-font-size-lg);
+  }
+
+  .body-lg {
+    font-size: var(--token-font-size-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .heading-1 {
+    font-size: var(--token-font-size-2xl);
+  }
+
+  .heading-2 {
+    font-size: var(--token-font-size-xl);
+  }
+
+  .heading-3 {
+    font-size: var(--token-font-size-lg);
+  }
+}
+
+/* Responsive Text Size Utilities */
+@media (min-width: 768px) {
+  .md\:text-xs {
+    font-size: var(--token-font-size-xs);
+  }
+
+  .md\:text-sm {
+    font-size: var(--token-font-size-sm);
+  }
+
+  .md\:text-base {
+    font-size: var(--token-font-size-base);
+  }
+
+  .md\:text-lg {
+    font-size: var(--token-font-size-lg);
+  }
+
+  .md\:text-xl {
+    font-size: var(--token-font-size-xl);
+  }
+
+  .md\:text-2xl {
+    font-size: var(--token-font-size-2xl);
+  }
+
+  .md\:text-3xl {
+    font-size: var(--token-font-size-3xl);
+  }
+
+  .md\:text-4xl {
+    font-size: var(--token-font-size-4xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:text-xs {
+    font-size: var(--token-font-size-xs);
+  }
+
+  .lg\:text-sm {
+    font-size: var(--token-font-size-sm);
+  }
+
+  .lg\:text-base {
+    font-size: var(--token-font-size-base);
+  }
+
+  .lg\:text-lg {
+    font-size: var(--token-font-size-lg);
+  }
+
+  .lg\:text-xl {
+    font-size: var(--token-font-size-xl);
+  }
+
+  .lg\:text-2xl {
+    font-size: var(--token-font-size-2xl);
+  }
+
+  .lg\:text-3xl {
+    font-size: var(--token-font-size-3xl);
+  }
+
+  .lg\:text-4xl {
+    font-size: var(--token-font-size-4xl);
+  }
+}
+
+/* Text Wrapping Utilities */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.text-nowrap {
+  white-space: nowrap;
+}
+
+/* Editorial Reading Width (Claude Style) */
+.prose {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.prose-narrow {
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.prose-wide {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Typography Emphasis Utilities */
+.text-emphasis {
+  font-weight: var(--token-font-weight-medium);
+  color: var(--foreground);
+}
+
+.text-subtle {
+  color: var(--text-subtle);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+/* Link Styling */
+.link {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+.link:focus {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Code and Monospace Text */
+.code {
+  font-family: var(--token-font-mono);
+  font-size: 0.875em;
+  padding: 0.125rem 0.25rem;
+  background-color: var(--muted);
+  border-radius: 0.25rem;
+  border: 1px solid var(--border);
+}
+
+.code-block {
+  font-family: var(--token-font-mono);
+  font-size: var(--token-font-size-sm);
+  line-height: var(--token-line-height-normal);
+  padding: 1rem;
+  background-color: var(--muted);
+  border-radius: var(--token-radius-md);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+/* Blockquote Styling */
+.blockquote {
+  font-family: var(--token-font-sans);
+  font-size: var(--token-font-size-base);
+  line-height: var(--token-line-height-relaxed);
+  padding-left: var(--token-spacing-lg);
+  border-left: 3px solid var(--primary);
+  margin: var(--token-spacing-lg) 0;
+  color: var(--text-subtle);
+}

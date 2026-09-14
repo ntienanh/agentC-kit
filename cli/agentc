@@ -1,0 +1,139 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# AGENTC UNIFIED COMMAND-LINE INTERFACE (CLI)
+# Single Entrypoint for Autonomous Software Engineering Workflow
+# ==============================================================================
+set -eo pipefail
+
+CLI_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+KIT_ROOT="$(cd "${CLI_DIR}/.." && pwd)"
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+CYAN='\033[0;36m'
+BOLD='\033[1m'
+NC='\033[0m'
+
+print_banner() {
+  echo -e "${BOLD}${CYAN}================================================================"
+  echo -e "   ⚡ AGENTC UNIFIED CLI — Autonomous Engineering Engine"
+  echo -e "================================================================${NC}"
+}
+
+print_help() {
+  print_banner
+  cat << EOF
+Usage: agentc <command> [arguments...]
+
+Execution Core Commands:
+  gate [action]             Manage 5-Gate Lifecycle state machine
+                              Actions: status (default), advance, retry, reset, abort
+  match "<prompt>" [opts]   BM25 JIT Skill Router — match task to discrete skill
+                              Options: --gate <n>, --top-n <n>, --json
+  verify [options] [dir]    Execute Mechanical Invariant Verifiers (Exit 0/1)
+                              Options: --fix, --staged, --rule <name>, --gate <n>, --compress
+  subagent <action> [opts]  Strict Multi-Agent Worker Dispatcher (Axiom 1)
+                              Actions: dispatch, list, status
+  audit [opts] -- <cmd>     Wrap any command in JSON run audit logger
+                              Options: --gate <n>, --checker <name>
+
+Multi-Platform & Tooling Commands:
+  mcp                       Start AgentC Unified MCP Server over stdio
+  export --target <tgt>     Export platform adapter (claude, codex, antigravity)
+
+Quality & Safety Commands:
+  abort                     Emergency kill-switch: halt processes, release ports, stash
+  checkpoint [action]       Manage Git Stash checkpoints
+                              Actions: list (default), save <label>, rollback <label>
+  hooks                     Install automatic Git pre-commit & pre-push hooks
+
+Transparency & Metrics Commands:
+  report [--last-n N]       Generate KPI & Run-Audit summary dashboard
+  metrics [options]         Record telemetry metric into runtime database
+
+Information:
+  version, -v               Show AgentC version
+  help, -h, --help          Show this guidance
+
+Examples:
+  ./cli/agentc gate status
+  ./cli/agentc match "build backend nestjs module" --gate 2
+  ./cli/agentc verify --fix
+  ./cli/agentc report --last-n 5
+  ./cli/agentc abort
+EOF
+}
+
+SUBCOMMAND="${1:-help}"
+shift 2>/dev/null || true
+
+case "${SUBCOMMAND}" in
+  gate)
+    bash "${KIT_ROOT}/core/gate/gate-runner.sh" "$@"
+    ;;
+
+  match)
+    if [[ "$1" != -* ]] && [ -n "$1" ]; then
+      PROMPT_ARG="$1"
+      shift
+      node "${KIT_ROOT}/cli/skill-matcher.mjs" --prompt "${PROMPT_ARG}" "$@"
+    else
+      node "${KIT_ROOT}/cli/skill-matcher.mjs" "$@"
+    fi
+    ;;
+
+  verify)
+    bash "${KIT_ROOT}/core/checkers/verify-invariants.sh" "$@"
+    ;;
+
+  abort)
+    bash "${KIT_ROOT}/core/gate/agentc-abort.sh" "$@"
+    ;;
+
+  checkpoint)
+    bash "${KIT_ROOT}/core/gate/git-checkpoint.sh" "$@"
+    ;;
+
+  report)
+    bash "${KIT_ROOT}/core/gate/audit-report.sh" "$@"
+    ;;
+
+  audit)
+    bash "${KIT_ROOT}/core/gate/run-audit-logger.sh" "$@"
+    ;;
+
+  metrics)
+    bash "${KIT_ROOT}/core/gate/metrics-collector.sh" "$@"
+    ;;
+
+  hooks)
+    bash "${KIT_ROOT}/cli/hooks/install-hooks.sh" "$@"
+    ;;
+
+  subagent)
+    node "${KIT_ROOT}/core/harness/subagent-dispatcher.mjs" "$@"
+    ;;
+
+  mcp)
+    node "${KIT_ROOT}/core/mcp/agentc-server.mjs" "$@"
+    ;;
+
+  export)
+    node "${KIT_ROOT}/core/adapters/export-adapter.mjs" "$@"
+    ;;
+
+  version|-v|--version)
+    echo "AgentC-Kit Engine v2.1.0-hyper"
+    ;;
+
+  help|-h|--help)
+    print_help
+    ;;
+
+  *)
+    echo -e "${RED}Unknown command: ${SUBCOMMAND}${NC}\n"
+    print_help
+    exit 1
+    ;;
+esac

@@ -1,0 +1,1 @@
+@Controller("fake") export class FakeController { @Post() create(@Body() dto: IFakeCreateDto) {} }

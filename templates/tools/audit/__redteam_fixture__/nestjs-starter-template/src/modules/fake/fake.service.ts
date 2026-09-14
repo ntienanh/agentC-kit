@@ -1,0 +1,1 @@
+const jwtSecret = process.env.JWT_SECRET || "default_insecure_secret";

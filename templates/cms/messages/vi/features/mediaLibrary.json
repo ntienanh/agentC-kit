@@ -1,0 +1,81 @@
+{
+  "collectionSidebar": {
+    "rename": "Đổi tên",
+    "delete": "Xóa",
+    "deleteHasFiles": "Xóa (chứa tệp)",
+    "allAssets": "Tất cả tài sản",
+    "undefinedMedia": "Đa phương tiện chưa xác định",
+    "collections": "Bộ sưu tập",
+    "findCollection": "Tìm bộ sưu tập…",
+    "new": "Mới",
+    "noMatches": "Không tìm thấy",
+    "noFolders": "Chưa có thư mục nào"
+  },
+  "panelActions": {
+    "searchPlaceholder": "Tìm kiếm phương tiện...",
+    "collections": "Bộ sưu tập",
+    "selectAll": "Chọn tất cả ({count})",
+    "deselectAll": "Bỏ chọn tất cả ({count})",
+    "done": "Xong",
+    "select": "Chọn",
+    "clearAll": "Xóa tất cả"
+  },
+  "picker": {
+    "emptyImage": "Không có hình ảnh trong bộ sưu tập này",
+    "emptyVideo": "Không có video trong bộ sưu tập này",
+    "emptyAll": "Không có phương tiện trong bộ sưu tập này",
+    "selectMedia": "Chọn phương tiện",
+    "selectImage": "Chọn hình ảnh",
+    "selectVideo": "Chọn video",
+    "select": "Chọn",
+    "selectWithCount": "Chọn ({count})",
+    "cancel": "Hủy",
+    "selectedSummary": "Đã chọn {count} mục phương tiện{plural}",
+    "clearAll": "Xóa tất cả"
+  },
+  "library": {
+    "collectionsTitle": "Bộ sưu tập",
+    "deleteCollectionTitle": "Xóa bộ sưu tập",
+    "deleteCollectionContent": "Xóa \"{name}\"? Các tệp trong bộ sưu tập này sẽ không bị xóa.",
+    "collectionDeleted": "Đã xóa bộ sưu tập"
+  },
+  "mainPanel": {
+    "upload": "Tải lên",
+    "deleteFileTitle": "Xóa tệp",
+    "fileDeleted": "Đã xóa tệp",
+    "clearAllTitle": "Xóa tất cả phương tiện",
+    "clearAllContent": "Lưu trữ và Cơ sở dữ liệu sẽ bị xóa. Hành động này không thể hoàn tác.",
+    "allFilesCleared": "Đã xóa tất cả các tệp"
+  },
+  "batch": {
+    "bulkDeleteTitle": "Xóa hàng loạt",
+    "selectedFilesDeleted": "Đã xóa các tệp đã chọn",
+    "selectedFilesMoved": "Di chuyển các tệp đã chọn thành công",
+    "moveToAllMedia": "Chuyển tới Tất cả phương tiện",
+    "selected": "Đã chọn",
+    "mediaFile": "Tệp phương tiện",
+    "mediaFiles": "Các tệp phương tiện"
+  },
+  "collectionForm": {
+    "updated": "Đã cập nhật bộ sưu tập",
+    "created": "Đã tạo bộ sưu tập",
+    "editTitle": "Chỉnh sửa bộ sưu tập",
+    "newTitle": "Bộ sưu tập mới",
+    "nameLabel": "Tên",
+    "nameRequired": "Tên bộ sưu tập là bắt buộc",
+    "namePlaceholder": "VD: Hình ảnh sản phẩm",
+    "descriptionLabel": "Mô tả",
+    "descriptionPlaceholder": "Mô tả tùy chọn"
+  },
+  "imagePicker": {
+    "selectImage": "Chọn hình ảnh",
+    "cancel": "Hủy",
+    "noImages": "Không có hình ảnh trong bộ sưu tập này"
+  },
+  "imagePickerField": {
+    "change": "Thay đổi",
+    "selectImage": "Chọn hình ảnh",
+    "selectImages": "Chọn các hình ảnh",
+    "clear": "Xóa"
+  }
+}

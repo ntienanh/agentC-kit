@@ -1,0 +1,20 @@
+{
+  "title": "Bảng Quản Trị",
+  "pageKicker": "Truy Cập Bảo Mật",
+  "pageTitle": "Đăng nhập vào Bảng Quản Trị",
+  "subtitle": "Nhập thông tin xác thực để truy cập nền tảng quản trị.",
+  "usernameLabel": "Địa chỉ Email hoặc Tên đăng nhập",
+  "usernamePlaceholder": "name@domain.com",
+  "usernameRequired": "Vui lòng nhập địa chỉ email hoặc tên đăng nhập.",
+  "passwordLabel": "Mật khẩu",
+  "passwordPlaceholder": "••••••••••••",
+  "passwordRequired": "Vui lòng nhập mật khẩu.",
+  "rememberMe": "Ghi nhớ đăng nhập",
+  "forgotPassword": "Quên mật khẩu?",
+  "signInButton": "Đăng Nhập",
+  "securityNote": "Hệ thống kiểm soát truy cập dựa trên vai trò (RBAC) được áp dụng khi xác thực.",
+  "permissionsChangedWarning": "Quyền truy cập của bạn đã được cập nhật. Vui lòng đăng nhập lại để tiếp tục.",
+  "loginSuccess": "Xác thực thành công",
+  "loginFailed": "Xác thực thất bại",
+  "tagline": "Nền Tảng Vận Hành Khối Doanh Nghiệp"
+}

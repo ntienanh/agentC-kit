@@ -1,0 +1,6 @@
+export const UI_TIMING = {
+  DEBOUNCE_MS: 300,
+  TOAST_DURATION_S: 3,
+  REDIRECT_DELAY_MS: 1500,
+  TRANSITION_MS: 500,
+} as const;

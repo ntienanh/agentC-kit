@@ -1,0 +1,138 @@
+# CONTEXT.md — Ubiquitous Language & Healthcare Clinic Bounded Context
+
+## 1. Bounded Context Overview
+Hệ thống Quản lý Phòng khám Đa khoa Tư nhân (Healthcare Clinic Management System) bao gồm toàn bộ vòng đời tương tác y tế: tiếp nhận, đặt lịch, điều phối hàng đợi, thăm khám, ghi nhận bệnh án, kê đơn và thanh toán.
+
+---
+
+## 2. Core Ubiquitous Language & Domain Glossary
+
+### **Clinic**
+Tổ chức cơ sở y tế cung cấp dịch vụ khám chữa bệnh, bao gồm cơ sở vật chất, phòng chức năng, danh mục dịch vụ và đội ngũ nhân sự.
+_Avoid_: Hospital, HospitalNetwork, Store, Branch
+_Domain Rules_:
+- Clinic quản lý danh mục phòng khám (Room), dịch vụ y tế (Service), và nhân sự y tế (Staff, Doctor).
+
+### **Patient**
+Người tiếp nhận dịch vụ y tế tại phòng khám, sở hữu hồ sơ cá nhân và toàn bộ lịch sử bệnh án.
+_Avoid_: Customer, Client, UserAccount, Member
+_Domain Rules_:
+- Mỗi Patient có mã định danh duy nhất trong toàn hệ thống.
+- Patient không được phép có hai cuộc hẹn diễn ra đồng thời (trùng khung giờ).
+- Patient có thể tự đăng ký, tra cứu bác sĩ, đặt hẹn, đổi lịch hoặc hủy hẹn theo quy chế phòng khám.
+
+### **Doctor**
+Bác sĩ hành nghề được cấp phép làm việc tại phòng khám, cung cấp các dịch vụ chuyên môn theo lịch trực.
+_Avoid_: Provider, Practitioner, MedicalWorker
+_Domain Rules_:
+- Doctor phải ở trạng thái HOẠT ĐỘNG (ACTIVE) mới được tiếp nhận lịch hẹn mới.
+- Doctor không thể có hai cuộc hẹn chủ động diễn ra đồng thời tại cùng một thời điểm.
+- Doctor có thể đăng ký lịch làm việc định kỳ (Schedule) và lịch nghỉ phép tạm thời (DoctorLeave).
+- Doctor là tác nhân duy nhất có thẩm quyền thực hiện Consultation và ký duyệt Prescription.
+
+### **Staff**
+Nhân sự vận hành phòng khám, bao gồm Lễ tân (Receptionist) và Quản trị viên (Clinic Admin).
+_Avoid_: Employee, Operator, Agent
+_Domain Rules_:
+- Receptionist chịu trách nhiệm điều phối hàng đợi (WaitingQueue), xác nhận Check-in, hỗ trợ đặt hẹn thay bệnh nhân và thu ngân (Payment).
+- Clinic Admin có thẩm quyền quản lý cấu hình dịch vụ, phân ca làm việc, duyệt nghỉ phép và xem báo cáo tài chính/vận hành.
+
+### **ClinicService**
+Dịch vụ khám chữa bệnh cụ thể do phòng khám cung cấp (ví dụ: Khám tổng quát, Khám chuyên khoa, Tái khám).
+_Avoid_: Item, Product, TreatmentType, Package
+_Domain Rules_:
+- Mỗi dịch vụ có thời lượng quy chuẩn (duration, tính theo phút) và mức giá niêm yết (price).
+- Thời lượng dịch vụ quyết định độ dài của khung giờ hẹn trên lịch bác sĩ.
+- Dịch vụ ở trạng thái KHÔNG HOẠT ĐỘNG (INACTIVE) sẽ không thể đặt mới; các lịch đã đặt trước đó vẫn phải được xử lý.
+
+### **Room**
+Phòng khám chức năng thực tế tại cơ sở phòng khám nơi diễn ra buổi thăm khám.
+_Avoid_: Department, Location, Station
+_Domain Rules_:
+- Mỗi cuộc hẹn đang thăm khám (IN_CONSULTATION) cần được phân bổ vào một Room xác định.
+- Một Room không thể tiếp nhận hai buổi khám cùng lúc.
+
+### **Schedule**
+Khung thời gian làm việc định kỳ hàng tuần của bác sĩ tại phòng khám.
+_Avoid_: Shift, Timetable, Roster
+_Domain Rules_:
+- Bao gồm các ngày làm việc trong tuần, giờ bắt đầu, giờ kết thúc và khoảng nghỉ giữa ca (Break Time).
+- Khung giờ trống (Available Slot) được tính toán động dựa trên: Giờ làm việc - Khoảng nghỉ - Ngày nghỉ phép - Các lịch hẹn đã đặt.
+
+### **DoctorLeave**
+Khoảng thời gian bác sĩ xin nghỉ phép tạm thời không tiếp nhận bệnh nhân.
+_Avoid_: DayOff, Vacation, Absence
+_Domain Rules_:
+- Khi DoctorLeave được phê duyệt, mọi khung giờ trong khoảng nghỉ đó lập tức bị khóa không cho đặt mới.
+- Các cuộc hẹn đã tồn tại trùng giờ nghỉ phép phải được xử lý (Hủy, Đổi lịch, hoặc chuyển bác sĩ phụ trách).
+
+### **Appointment**
+Thực thể trung tâm kết nối Bệnh nhân, Bác sĩ, Dịch vụ y tế, Khung giờ và Phòng khám.
+_Avoid_: Booking, Reservation, Meeting, Session
+_Domain Rules_:
+- Vòng đời trạng thái:
+  `AVAILABLE` → `BOOKED` → `CONFIRMED` → `CHECKED_IN` → `IN_CONSULTATION` → `COMPLETED`
+  Nhánh rẽ: `CANCELLED`, `NO_SHOW`.
+- Bất biến trạng thái:
+  - COMPLETED không thể chuyển thành CANCELLED hoặc BOOKED.
+  - CANCELLED hoặc NO_SHOW không thể chuyển thành CHECKED_IN hoặc COMPLETED.
+- Quy tắc hủy lịch (Cancellation Rule):
+  - Bệnh nhân chỉ được hủy trước giờ hẹn tối thiểu 2 giờ.
+  - Hủy dưới 2 giờ được đánh dấu là `LATE_CANCELLATION`.
+- Quy tắc đổi lịch (Rescheduling Rule):
+  - Chỉ áp dụng cho trạng thái `BOOKED` hoặc `CONFIRMED`.
+  - Nghiêm cấm đổi lịch khi đã `CHECKED_IN`, `IN_CONSULTATION`, `COMPLETED`, `CANCELLED`, `NO_SHOW`.
+
+### **WaitingQueue**
+Hàng đợi thực tế của các bệnh nhân đã check-in tại phòng khám trong ngày.
+_Avoid_: WaitingList, Line, FifoBuffer
+_Domain Rules_:
+- Trạng thái hàng đợi: `WAITING` → `CALLED` → `IN_CONSULTATION`.
+- Mỗi lượt check-in sinh ra số thứ tự hàng đợi (Queue Number) duy nhất trong ngày.
+- Bác sĩ hoặc lễ tân có thể gọi lượt tiếp theo hoặc đánh dấu vắng mặt.
+
+### **Consultation**
+Phiên làm việc chuyên môn trực tiếp giữa bác sĩ và bệnh nhân.
+_Avoid_: Examination, CheckupSession, VisitRecord
+_Domain Rules_:
+- Một Appointment có tối đa một Consultation duy nhất.
+- Bác sĩ ghi nhận: Lý do khám (Chief Complaint), Triệu chứng (Symptoms), Chỉ số sinh tồn (Vitals: Huyết áp, Nhịp tim, Thân nhiệt, Cân nặng), Chẩn đoán (Diagnosis), Phác đồ điều trị (Treatment) và Lời dặn tái khám (Follow-up).
+- Sau khi đánh dấu COMPLETED, Consultation trở thành bản ghi bất biến (Immutable). Mọi chỉnh sửa bổ sung bắt buộc phải tạo bản ghi phụ lục/ghi chú có dấu vết thời gian.
+
+### **MedicalRecord**
+Tập hợp toàn bộ lịch sử thăm khám, chẩn đoán, xét nghiệm và điều trị tích lũy của một bệnh nhân qua thời gian.
+_Avoid_: HealthFile, EHR, MedicalDocument
+_Domain Rules_:
+- Mỗi Consultation hoàn tất sẽ tự động đóng góp một bản ghi vào MedicalRecord của bệnh nhân.
+- Hồ sơ y bạ được bảo mật nghiêm ngặt: Bệnh nhân chỉ xem hồ sơ của mình; Bác sĩ xem hồ sơ khi phụ trách thăm khám; Lễ tân chỉ được xem thông tin hành chính rút gọn.
+
+### **Prescription & PrescriptionItem**
+Đơn thuốc y khoa do bác sĩ ban hành đi kèm với một buổi thăm khám cụ thể.
+_Avoid_: DrugOrder, MedicineBill, PharmacySlip
+_Domain Rules_:
+- Prescription bắt buộc phải thuộc về một Consultation xác định.
+- Mỗi PrescriptionItem quy định: Tên thuốc (Medicine), Dạng/Hàm lượng (Dosage), Tần suất uống (Frequency), Thời gian dùng (Duration) và Hướng dẫn sử dụng (Instructions).
+- Đơn thuốc đã ký hoàn tất không thể chỉnh sửa trực tiếp.
+
+### **Payment**
+Giao dịch thanh toán chi phí dịch vụ khám chữa bệnh tại phòng khám.
+_Avoid_: Invoice, Bill, Transaction, Receipt
+_Domain Rules_:
+- Trạng thái thanh toán: `UNPAID` → `PENDING` → `PAID` → `REFUNDED`.
+- Cuộc hẹn hoàn thành cần được thanh toán dứt điểm.
+- Với cuộc hẹn bị hủy trước giờ khám đủ điều kiện, hệ thống kích hoạt quy trình hoàn tiền (Refund).
+
+### **Notification**
+Bản tin thông báo sự kiện quan trọng gửi tới bệnh nhân hoặc nhân sự y tế.
+_Avoid_: Message, PushAlert, EmailRecord
+_Domain Rules_:
+- Tự động kích hoạt khi: Đặt hẹn thành công, Nhắc hẹn trước 24h, Hủy hẹn, Đổi lịch hẹn, Ban hành đơn thuốc mới.
+
+---
+
+## 3. Core Business Invariants
+1. **Zero Double-Booking Invariant:** Tại cùng một thời điểm, một bác sĩ không thể có nhiều hơn một cuộc hẹn ở trạng thái `BOOKED`, `CONFIRMED`, `CHECKED_IN`, hoặc `IN_CONSULTATION`.
+2. **Zero Patient-Conflict Invariant:** Tại cùng một thời điểm, một bệnh nhân không thể có hai cuộc hẹn trùng khung giờ với hai bác sĩ khác nhau.
+3. **Temporal Invariant:** Không cho phép đặt lịch, đổi lịch hoặc tạo ca khám trong quá khứ.
+4. **Consultation Singularity:** Mỗi cuộc hẹn chỉ tương ứng với tối đa một phiên khám bệnh.
+5. **Medical History Immutability:** Bản ghi bệnh án và đơn thuốc đã ký duyệt là bất biến, không bị ghi đè hoặc xóa bỏ tùy tiện.

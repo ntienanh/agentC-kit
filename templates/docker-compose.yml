@@ -1,0 +1,98 @@
+services:
+  # 🗄️ PostgreSQL 16 Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: agentc-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres_secure_pass}
+      POSTGRES_DB: ${POSTGRES_DB:-starter_template_db}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-postgres} -d $${POSTGRES_DB:-starter_template_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - agentc-network
+
+  # ⚡ Redis 7 (In-Memory Cache & Socket.IO Adapter)
+  redis:
+    image: redis:7-alpine
+    container_name: agentc-redis
+    restart: unless-stopped
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-redis_secure_pass}
+    command: >
+      sh -c "redis-server --requirepass $${REDIS_PASSWORD:-redis_secure_pass} --appendonly yes"
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli -a $${REDIS_PASSWORD:-redis_secure_pass} ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - agentc-network
+
+  # 📦 MinIO S3 Object Storage
+  minio:
+    image: minio/minio:RELEASE.2024-11-07T00-52-28Z
+    container_name: agentc-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin_secret}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - agentc-network
+
+  # 🛠️ MinIO Auto-Provisioning (Create default media-store bucket)
+  minio-init:
+    image: minio/mc:RELEASE.2024-11-05T11-41-28Z
+    container_name: agentc-minio-init
+    depends_on:
+      minio:
+        condition: service_healthy
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin_secret}
+    entrypoint: >
+      /bin/sh -c "
+      mc alias set local http://minio:9000 $${MINIO_ROOT_USER:-minioadmin} $${MINIO_ROOT_PASSWORD:-minioadmin_secret};
+      mc mb --ignore-existing local/media-store;
+      mc anonymous set none local/media-store;
+      echo 'MinIO media-store bucket successfully initialized (private access)';
+      exit 0;
+      "
+    networks:
+      - agentc-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  minio_data:
+    driver: local
+
+networks:
+  agentc-network:
+    driver: bridge

@@ -1,0 +1,36 @@
+{
+  "appTitle": "Enterprise Client Portal",
+  "appDescription": "Modern Multi-Tenant Client Portal",
+  "loading": "Loading...",
+  "notice": {
+    "badge": "Notice",
+    "message": "Enterprise Platform v2.0 is live. Explore modular architecture and integrations.",
+    "learnMore": "Learn More"
+  },
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Sign In",
+    "register": "Register",
+    "profile": "Profile",
+    "booking": "Book Appointment"
+  },
+  "footer": {
+    "tagline": "Experience modern, secure enterprise management.",
+    "getStarted": "Get Started",
+    "operatingHours": "Operating Hours",
+    "operatingDays": "Monday - Friday",
+    "operatingTime": "09:00 AM - 06:00 PM EST",
+    "phone": "Phone",
+    "email": "Email",
+    "headquarters": "Headquarters",
+    "headquartersTitle": "Enterprise Headquarters",
+    "address": "100 Enterprise Way, Suite 400 - San Francisco, CA",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy",
+    "faq": "FAQ",
+    "copyright": "Enterprise Client Portal. All rights reserved."
+  }
+}

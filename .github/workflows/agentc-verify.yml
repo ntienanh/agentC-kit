@@ -1,0 +1,32 @@
+name: agentc-v2 Mechanical Invariant Verification
+
+on:
+  pull_request:
+    branches: ["main", "develop", "master"]
+  push:
+    branches: ["main"]
+
+jobs:
+  invariant-check:
+    name: Verify Invariants (Exit Code 0/1)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Make scripts executable
+        run: chmod +x agentc-v2/scripts/*.sh
+
+      - name: Run Mechanical Invariant Verification
+        run: bash agentc-v2/scripts/verify-invariants.sh --json-output
+        env:
+          CI: "true"
+
+      - name: Run Schema Safety Guardrail
+        run: bash agentc-v2/scripts/check-schema-safety.sh
+        continue-on-error: false

@@ -1,0 +1,81 @@
+{
+  "collectionSidebar": {
+    "rename": "Rename",
+    "delete": "Delete",
+    "deleteHasFiles": "Delete (has files)",
+    "allAssets": "All Assets",
+    "undefinedMedia": "Undefined Media",
+    "collections": "Collections",
+    "findCollection": "Find collection\u2026",
+    "new": "New",
+    "noMatches": "No matches",
+    "noFolders": "No folders yet"
+  },
+  "panelActions": {
+    "searchPlaceholder": "Search media...",
+    "collections": "Collections",
+    "selectAll": "Select All ({count})",
+    "deselectAll": "Deselect All ({count})",
+    "done": "Done",
+    "select": "Select",
+    "clearAll": "Clear All"
+  },
+  "picker": {
+    "emptyImage": "No images in this collection",
+    "emptyVideo": "No videos in this collection",
+    "emptyAll": "No media in this collection",
+    "selectMedia": "Select Media",
+    "selectImage": "Select Image",
+    "selectVideo": "Select Video",
+    "select": "Select",
+    "selectWithCount": "Select ({count})",
+    "cancel": "Cancel",
+    "selectedSummary": "{count} media item{plural} selected",
+    "clearAll": "Clear all"
+  },
+  "library": {
+    "collectionsTitle": "Collections",
+    "deleteCollectionTitle": "Delete Collection",
+    "deleteCollectionContent": "Delete \"{name}\"? Files in this collection will not be deleted.",
+    "collectionDeleted": "Collection deleted"
+  },
+  "mainPanel": {
+    "upload": "Upload",
+    "deleteFileTitle": "Delete File",
+    "fileDeleted": "File deleted",
+    "clearAllTitle": "Clear All Media",
+    "clearAllContent": "Storage and Database will be cleared. This action is irreversible.",
+    "allFilesCleared": "All files cleared"
+  },
+  "batch": {
+    "bulkDeleteTitle": "Bulk Delete",
+    "selectedFilesDeleted": "Selected files deleted",
+    "selectedFilesMoved": "Selected files moved successfully",
+    "moveToAllMedia": "Move to All Media",
+    "selected": "Selected",
+    "mediaFile": "Media file",
+    "mediaFiles": "Media files"
+  },
+  "collectionForm": {
+    "updated": "Collection updated",
+    "created": "Collection created",
+    "editTitle": "Edit Collection",
+    "newTitle": "New Collection",
+    "nameLabel": "Name",
+    "nameRequired": "Collection name is required",
+    "namePlaceholder": "e.g. Product Images",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "Optional description"
+  },
+  "imagePicker": {
+    "selectImage": "Select Image",
+    "cancel": "Cancel",
+    "noImages": "No images in this collection"
+  },
+  "imagePickerField": {
+    "change": "Change",
+    "selectImage": "Select Image",
+    "selectImages": "Select Images",
+    "clear": "Clear"
+  }
+}

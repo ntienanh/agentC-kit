@@ -1,0 +1,22 @@
+{
+  "required": "{field} là bắt buộc",
+  "min": "{field} phải có ít nhất {count}",
+  "max": "{field} không được vượt quá {count}",
+  "minLength": "{field} phải có ít nhất {count} ký tự",
+  "maxLength": "{field} không được vượt quá {count} ký tự",
+
+  "file": {
+    "maxItems": "Tối đa cho phép {count} tệp",
+    "minItems": "Yêu cầu ít nhất {count} tệp",
+    "invalidType": "Định dạng tệp không hợp lệ",
+    "maxSize": "Kích thước tệp phải nhỏ hơn {size}MB"
+  },
+
+  "array": {
+    "maxItems": "Tối đa cho phép {count} mục",
+    "minItems": "Yêu cầu ít nhất {count} mục"
+  },
+
+  "notFound": "Không tìm thấy {item}",
+  "invalid": "{field} không hợp lệ"
+}
