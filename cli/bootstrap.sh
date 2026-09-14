@@ -48,7 +48,25 @@ cp -r "${KIT_ROOT}/core/"* "${AGENTC_DIR}/core/"
 cp -r "${KIT_ROOT}/agents/"* "${AGENTC_DIR}/agents/"
 chmod +x "${AGENTC_DIR}/cli/agentc"
 
-# 2. Inject Boilerplate Template if requested
+# 2. Interactive Template Selection Prompt (if --template not specified and running in TTY)
+if [ -z "${TEMPLATE_OPTION}" ] && [ -t 0 ]; then
+  echo ""
+  echo "📦 Select a Starter Boilerplate Template to inject (or Skip for Pure Governance):"
+  echo "  1) NestJS Enterprise Backend (be)"
+  echo "  2) Next.js CMS Admin (cms)"
+  echo "  3) Front Office Client Portal (fo)"
+  echo "  4) None (Pure Governance & Engine Only)"
+  echo -n "Enter choice [1-4] (default: 4): "
+  read -r CHOICE
+  case "${CHOICE}" in
+    1) TEMPLATE_OPTION="be" ;;
+    2) TEMPLATE_OPTION="cms" ;;
+    3) TEMPLATE_OPTION="fo" ;;
+    *) TEMPLATE_OPTION="" ;;
+  esac
+fi
+
+# Inject Boilerplate Template if selected
 if [ -n "${TEMPLATE_OPTION}" ]; then
   SRC_TEMPLATE_DIR=""
   case "${TEMPLATE_OPTION}" in
