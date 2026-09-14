@@ -8,7 +8,7 @@
   "main": "cli/agentc",
   "bin": {
     "agentc": "./cli/agentc",
-    "create-agentc": "./cli/bootstrap.sh"
+    "create-agentc": "./cli/bootstrap.mjs"
   },
   "scripts": {
     "agentc": "./cli/agentc",
