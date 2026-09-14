@@ -48,68 +48,11 @@ cp -r "${KIT_ROOT}/core/"* "${AGENTC_DIR}/core/"
 cp -r "${KIT_ROOT}/agents/"* "${AGENTC_DIR}/agents/"
 chmod +x "${AGENTC_DIR}/cli/agentc"
 
-# Function to draw interactive arrow-key select menu in terminal
-select_menu() {
-  local options=("$@")
-  local selected=0
-  local key=""
-
-  # Hide cursor
-  tput civis 2>/dev/null || true
-
-  # Handle cleanup on exit
-  trap 'tput cnorm 2>/dev/null || true' EXIT
-
-  while true; do
-    echo -e "\n📦 Select a Starter Boilerplate Template (Use ↑/↓ Arrow Keys & Enter):" >&2
-    for i in "${!options[@]}"; do
-      if [ "$i" -eq "$selected" ]; then
-        echo -e "  \033[1;36m❯ ${options[$i]}\033[0m" >&2
-      else
-        echo -e "    ${options[$i]}" >&2
-      fi
-    done
-
-    # Read arrow keys (3 bytes sequence \033[A or \033[B)
-    read -rsn1 key
-    if [[ $key == $'\x1b' ]]; then
-      read -rsn2 key
-      if [[ $key == "[A" ]]; then # Up arrow
-        ((selected--))
-        if [ $selected -lt 0 ]; then selected=$((${#options[@]} - 1)); fi
-      elif [[ $key == "[B" ]]; then # Down arrow
-        ((selected++))
-        if [ $selected -ge ${#options[@]} ]; then selected=0; fi
-      fi
-    elif [[ $key == "" ]]; then # Enter key
-      break
-    fi
-
-    # Move cursor back up to redraw menu
-    local lines=$((${#options[@]} + 2))
-    tput cuu $lines 2>/dev/null || printf "\033[%dA" "$lines" >&2
-  done
-
-  # Restore cursor
-  tput cnorm 2>/dev/null || true
-  echo "$selected"
-}
-
-# 2. Interactive Template Selection Prompt (Arrow Keys)
+# 2. Interactive Template Selection Prompt (Node.js TTY Menu)
 if [ -z "${TEMPLATE_OPTION}" ] && [ -t 0 ]; then
-  MENU_ITEMS=(
-    "NestJS Enterprise Backend (be)"
-    "Next.js CMS Admin (cms)"
-    "Front Office Client Portal (fo)"
-    "None (Pure Governance & Engine Only)"
-  )
-  CHOICE_IDX=$(select_menu "${MENU_ITEMS[@]}")
-  case "${CHOICE_IDX}" in
-    0) TEMPLATE_OPTION="be" ;;
-    1) TEMPLATE_OPTION="cms" ;;
-    2) TEMPLATE_OPTION="fo" ;;
-    *) TEMPLATE_OPTION="" ;;
-  esac
+  if [ -f "${KIT_ROOT}/cli/select-menu.mjs" ]; then
+    TEMPLATE_OPTION=$(node "${KIT_ROOT}/cli/select-menu.mjs" 2>/dev/tty) || TEMPLATE_OPTION=""
+  fi
 fi
 
 # Inject Boilerplate Template if selected
