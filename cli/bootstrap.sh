@@ -14,7 +14,22 @@ else
   KIT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 fi
 
-TARGET_DIR="${1:-.}"
+TARGET_DIR="."
+TEMPLATE_OPTION=""
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --template|-t)
+      TEMPLATE_OPTION="$2"
+      shift 2
+      ;;
+    *)
+      TARGET_DIR="$1"
+      shift
+      ;;
+  esac
+done
+
 TARGET_DIR_ABS="$(cd "${TARGET_DIR}" && pwd)"
 
 echo "🚀 Bootstrapping AgentC Kernel Governance into: ${TARGET_DIR_ABS}"
@@ -33,7 +48,33 @@ cp -r "${KIT_ROOT}/core/"* "${AGENTC_DIR}/core/"
 cp -r "${KIT_ROOT}/agents/"* "${AGENTC_DIR}/agents/"
 chmod +x "${AGENTC_DIR}/cli/agentc"
 
-# 2. Create Root AGENTS.md Pointer for universal AI Agent auto-discovery
+# 2. Inject Boilerplate Template if requested
+if [ -n "${TEMPLATE_OPTION}" ]; then
+  SRC_TEMPLATE_DIR=""
+  case "${TEMPLATE_OPTION}" in
+    be|nestjs|backend)
+      SRC_TEMPLATE_DIR="${KIT_ROOT}/templates/be"
+      ;;
+    cms|admin)
+      SRC_TEMPLATE_DIR="${KIT_ROOT}/templates/cms"
+      ;;
+    fo|frontend)
+      SRC_TEMPLATE_DIR="${KIT_ROOT}/templates/fo"
+      ;;
+    *)
+      echo "⚠️ Unknown template '${TEMPLATE_OPTION}'. Available options: be (nestjs), cms, fo"
+      ;;
+  esac
+
+  if [ -n "${SRC_TEMPLATE_DIR}" ] && [ -d "${SRC_TEMPLATE_DIR}" ]; then
+    echo "📦 Injecting Starter Template '${TEMPLATE_OPTION}' into ${TARGET_DIR_ABS}..."
+    rsync -av --exclude='node_modules' --exclude='dist' --exclude='.next' "${SRC_TEMPLATE_DIR}/" "${TARGET_DIR_ABS}/" 2>/dev/null || \
+    cp -r "${SRC_TEMPLATE_DIR}/"* "${TARGET_DIR_ABS}/"
+    echo "✅ Boilerplate Template '${TEMPLATE_OPTION}' injected successfully!"
+  fi
+fi
+
+# 3. Create Root AGENTS.md Pointer for universal AI Agent auto-discovery
 cat << 'ROOT_AGENTS' > "${TARGET_DIR_ABS}/AGENTS.md"
 # 🤖 AgentC Governance & Execution Pointer
 
@@ -47,7 +88,7 @@ cat << 'ROOT_AGENTS' > "${TARGET_DIR_ABS}/AGENTS.md"
 4. **RUNTIME CONTEXT & SPECS:** Store PRDs, domain context, and scratch logs under `/kit-docs/` (GitIgnored).
 ROOT_AGENTS
 
-# 3. Create kit-docs/ directory (LOCAL RUNTIME & CONTEXT)
+# 4. Create kit-docs/ directory (LOCAL RUNTIME & CONTEXT)
 KIT_DOCS_DIR="${TARGET_DIR_ABS}/kit-docs"
 mkdir -p "${KIT_DOCS_DIR}/specs"
 mkdir -p "${KIT_DOCS_DIR}/scratch"
@@ -57,7 +98,7 @@ if [ ! -f "${KIT_DOCS_DIR}/CONTEXT.md" ] && [ -f "${KIT_ROOT}/templates/kit-docs
   cp "${KIT_ROOT}/templates/kit-docs/CONTEXT.md.example" "${KIT_DOCS_DIR}/CONTEXT.md"
 fi
 
-# 4. Automatically append AgentC Auto-Generated Resources to Target Repo's .gitignore
+# 5. Automatically append AgentC Auto-Generated Resources to Target Repo's .gitignore
 GITIGNORE_PATH="${TARGET_DIR_ABS}/.gitignore"
 cat << 'GITIGNORE_ENTRIES' >> "${GITIGNORE_PATH}.tmp"
 # AgentC Local Runtime Resources & Auto-Generated Artifacts
@@ -86,5 +127,8 @@ echo "--------------------------------------------------------"
 echo "🤖 Root Pointer: AGENTS.md (Auto-read by all AI Agents)"
 echo "⚙️ Core Engine:  .agentc-kit/ (Rules, Engine & CLI)"
 echo "📝 Local Docs:   kit-docs/ (CONTEXT.md, specs, scratch - GitIgnored)"
+if [ -n "${TEMPLATE_OPTION}" ]; then
+  echo "📦 Template:     ${TEMPLATE_OPTION}"
+fi
 echo "--------------------------------------------------------"
 echo "👉 Usage command in target repo: ./.agentc-kit/cli/agentc verify"
