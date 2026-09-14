@@ -63,7 +63,7 @@ describe('AppointmentService', () => {
     expect(fulfilled.length).toBe(1);
     expect(rejected.length).toBe(1);
 
-    const rejectedReason = (rejected[0] as PromiseRejectedResult).reason;
+    const rejectedReason = rejected[0].reason;
     expect(rejectedReason).toBeInstanceOf(ConflictException);
     expect(rejectedReason.message).toContain('SLOT_ALREADY_BOOKED');
 
