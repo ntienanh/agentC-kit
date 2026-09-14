@@ -50,7 +50,11 @@ function parseSlotRange(
 
 const DEFAULT_SLOT_DURATION_MINUTES = 30;
 
-function doSlotsOverlap(slot1: string, slot2: string, duration = DEFAULT_SLOT_DURATION_MINUTES): boolean {
+function doSlotsOverlap(
+  slot1: string,
+  slot2: string,
+  duration = DEFAULT_SLOT_DURATION_MINUTES,
+): boolean {
   const r1 = parseSlotRange(slot1, duration);
   const r2 = parseSlotRange(slot2, duration);
   return Math.max(r1.start, r2.start) < Math.min(r1.end, r2.end);
@@ -103,10 +107,7 @@ export class AppointmentService {
       }
 
       const doctorAppointments =
-        await this.repo.findAppointmentsByDoctorAndDate(
-          dto.doctorId,
-          dto.date,
-        );
+        await this.repo.findAppointmentsByDoctorAndDate(dto.doctorId, dto.date);
       const hasDoctorConflict = doctorAppointments.some(
         (a) => a.isActive() && doSlotsOverlap(a.timeSlot, dto.timeSlot),
       );
@@ -190,8 +191,7 @@ export class AppointmentService {
       start % 60,
     );
     const now = this.getNow();
-    const diffHours =
-      (slotDate.getTime() - now.getTime()) / (1000 * 60 * 60);
+    const diffHours = (slotDate.getTime() - now.getTime()) / (1000 * 60 * 60);
 
     const isLate = diffHours < 2;
     appointment.cancel(dto.reason, dto.actor, isLate);
@@ -223,13 +223,9 @@ export class AppointmentService {
 
       this.validateNotPast(dto.newDate, dto.newTimeSlot);
 
-      const leaves = await this.repo.findLeavesByDoctorId(
-        appointment.doctorId,
-      );
+      const leaves = await this.repo.findLeavesByDoctorId(appointment.doctorId);
       if (leaves.some((l) => l.coversDate(dto.newDate))) {
-        throw new BadRequestException(
-          'Doctor is on leave on the new date',
-        );
+        throw new BadRequestException('Doctor is on leave on the new date');
       }
 
       const doctorAppointments =

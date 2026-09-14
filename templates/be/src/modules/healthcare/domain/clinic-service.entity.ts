@@ -1,4 +1,7 @@
-import { BaseEntity, BaseEntityProps } from '../../../core/database/base.entity';
+import {
+  BaseEntity,
+  BaseEntityProps,
+} from '../../../core/database/base.entity';
 import { ClinicServiceDto } from '@repo/contracts';
 
 export interface ClinicServiceProps extends BaseEntityProps {
@@ -62,8 +65,10 @@ export class ClinicServiceEntity extends BaseEntity {
   }): void {
     if (params.name !== undefined) this._name = params.name;
     if (params.code !== undefined) this._code = params.code;
-    if (params.description !== undefined) this._description = params.description;
-    if (params.durationMinutes !== undefined) this._durationMinutes = params.durationMinutes;
+    if (params.description !== undefined)
+      this._description = params.description;
+    if (params.durationMinutes !== undefined)
+      this._durationMinutes = params.durationMinutes;
     if (params.price !== undefined) this._price = params.price;
     if (params.isActive !== undefined) this._isActive = params.isActive;
     this.markAsUpdated();

@@ -13,7 +13,6 @@ import {
   CompleteConsultationDto,
   ConsultationDto,
   MedicalRecordDto,
-  QueueStatus,
 } from '@repo/contracts';
 
 @Injectable()
@@ -23,13 +22,9 @@ export class ClinicalService {
   async completeConsultation(
     dto: CompleteConsultationDto,
   ): Promise<ConsultationDto> {
-    const appointment = await this.repo.findAppointmentById(
-      dto.appointmentId,
-    );
+    const appointment = await this.repo.findAppointmentById(dto.appointmentId);
     if (!appointment) {
-      throw new NotFoundException(
-        `Appointment ${dto.appointmentId} not found`,
-      );
+      throw new NotFoundException(`Appointment ${dto.appointmentId} not found`);
     }
 
     const existingConsultation =
@@ -63,8 +58,7 @@ export class ClinicalService {
       isLocked: true,
     });
 
-    const savedConsultation =
-      await this.repo.saveConsultation(consultation);
+    const savedConsultation = await this.repo.saveConsultation(consultation);
 
     if (dto.prescriptionItems && dto.prescriptionItems.length > 0) {
       const prescription = new PrescriptionEntity({
@@ -118,8 +112,7 @@ export class ClinicalService {
   async getMedicalRecordByPatientId(
     patientId: string,
   ): Promise<MedicalRecordDto> {
-    let medicalRecord =
-      await this.repo.findMedicalRecordByPatientId(patientId);
+    let medicalRecord = await this.repo.findMedicalRecordByPatientId(patientId);
     if (!medicalRecord) {
       medicalRecord = new MedicalRecordEntity({
         patientId,

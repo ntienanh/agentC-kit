@@ -1,12 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Param,
-  Post,
-  Put,
-  Query,
-} from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { Public } from '@shared/decorators';
 import { DoctorService } from '../application/doctor.service';
@@ -71,9 +63,7 @@ export class HealthcareController {
 
   @Post('doctors')
   @Public()
-  createDoctor(
-    @Body() dto: CreateDoctorProfileDto,
-  ): Promise<DoctorProfileDto> {
+  createDoctor(@Body() dto: CreateDoctorProfileDto): Promise<DoctorProfileDto> {
     return this.doctorService.createDoctor(dto);
   }
 
@@ -151,17 +141,13 @@ export class HealthcareController {
 
   @Get('leaves')
   @Public()
-  findLeaves(
-    @Query('doctorId') doctorId: string,
-  ): Promise<DoctorLeaveDto[]> {
+  findLeaves(@Query('doctorId') doctorId: string): Promise<DoctorLeaveDto[]> {
     return this.doctorService.findLeavesByDoctorId(doctorId);
   }
 
   @Post('leaves')
   @Public()
-  createLeave(
-    @Body() dto: CreateDoctorLeaveDto,
-  ): Promise<DoctorLeaveDto> {
+  createLeave(@Body() dto: CreateDoctorLeaveDto): Promise<DoctorLeaveDto> {
     return this.doctorService.createLeave(dto);
   }
 
@@ -175,9 +161,7 @@ export class HealthcareController {
 
   @Post('appointments')
   @Public()
-  bookAppointment(
-    @Body() dto: CreateAppointmentDto,
-  ): Promise<AppointmentDto> {
+  bookAppointment(@Body() dto: CreateAppointmentDto): Promise<AppointmentDto> {
     return this.appointmentService.bookAppointment(dto);
   }
 
@@ -193,9 +177,7 @@ export class HealthcareController {
 
   @Get('appointments/:id')
   @Public()
-  findAppointmentById(
-    @Param('id') id: string,
-  ): Promise<AppointmentDto> {
+  findAppointmentById(@Param('id') id: string): Promise<AppointmentDto> {
     return this.appointmentService.findById(id);
   }
 
@@ -217,17 +199,13 @@ export class HealthcareController {
 
   @Post('queue/check-in')
   @Public()
-  checkIn(
-    @Body() dto: CheckInAppointmentDto,
-  ): Promise<QueueTicketDto> {
+  checkIn(@Body() dto: CheckInAppointmentDto): Promise<QueueTicketDto> {
     return this.queueService.checkIn(dto);
   }
 
   @Post('queue/call-next')
   @Public()
-  callNext(
-    @Body() dto: CallQueueTicketDto,
-  ): Promise<QueueTicketDto> {
+  callNext(@Body() dto: CallQueueTicketDto): Promise<QueueTicketDto> {
     return this.queueService.callNext(dto);
   }
 
@@ -241,9 +219,7 @@ export class HealthcareController {
 
   @Post('queue/:ticketId/skip')
   @Public()
-  skipQueue(
-    @Param('ticketId') ticketId: string,
-  ): Promise<QueueTicketDto> {
+  skipQueue(@Param('ticketId') ticketId: string): Promise<QueueTicketDto> {
     return this.queueService.skip(ticketId);
   }
 
@@ -279,9 +255,7 @@ export class HealthcareController {
 
   @Post('payments')
   @Public()
-  processPayment(
-    @Body() dto: ProcessPaymentDto,
-  ): Promise<PaymentRecordDto> {
+  processPayment(@Body() dto: ProcessPaymentDto): Promise<PaymentRecordDto> {
     return this.billingService.processPayment(dto);
   }
 

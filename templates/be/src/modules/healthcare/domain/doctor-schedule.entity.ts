@@ -1,4 +1,7 @@
-import { BaseEntity, BaseEntityProps } from '../../../core/database/base.entity';
+import {
+  BaseEntity,
+  BaseEntityProps,
+} from '../../../core/database/base.entity';
 import { DoctorScheduleDto } from '@repo/contracts';
 
 export interface DoctorScheduleProps extends BaseEntityProps {
@@ -76,9 +79,12 @@ export class DoctorScheduleEntity extends BaseEntity {
   }): void {
     if (params.startTime !== undefined) this._startTime = params.startTime;
     if (params.endTime !== undefined) this._endTime = params.endTime;
-    if (params.breakStartTime !== undefined) this._breakStartTime = params.breakStartTime;
-    if (params.breakEndTime !== undefined) this._breakEndTime = params.breakEndTime;
-    if (params.slotDurationMinutes !== undefined) this._slotDurationMinutes = params.slotDurationMinutes;
+    if (params.breakStartTime !== undefined)
+      this._breakStartTime = params.breakStartTime;
+    if (params.breakEndTime !== undefined)
+      this._breakEndTime = params.breakEndTime;
+    if (params.slotDurationMinutes !== undefined)
+      this._slotDurationMinutes = params.slotDurationMinutes;
     if (params.isActive !== undefined) this._isActive = params.isActive;
     this.markAsUpdated();
   }

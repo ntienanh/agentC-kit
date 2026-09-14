@@ -1,4 +1,7 @@
-import { BaseEntity, BaseEntityProps } from '../../../core/database/base.entity';
+import {
+  BaseEntity,
+  BaseEntityProps,
+} from '../../../core/database/base.entity';
 import {
   AppointmentStatus,
   AppointmentDto,

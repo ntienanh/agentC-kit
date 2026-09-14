@@ -1,4 +1,7 @@
-import { BaseEntity, BaseEntityProps } from '../../../core/database/base.entity';
+import {
+  BaseEntity,
+  BaseEntityProps,
+} from '../../../core/database/base.entity';
 import {
   ConsultationDto,
   IVitalSignsDto,
@@ -102,13 +105,17 @@ export class ConsultationEntity extends BaseEntity {
     if (this._isLocked) {
       throw new BadRequestException('Consultation is locked and immutable.');
     }
-    if (params.chiefComplaint !== undefined) this._chiefComplaint = params.chiefComplaint;
+    if (params.chiefComplaint !== undefined)
+      this._chiefComplaint = params.chiefComplaint;
     if (params.symptoms !== undefined) this._symptoms = params.symptoms;
     if (params.vitals !== undefined) this._vitals = params.vitals;
     if (params.diagnosis !== undefined) this._diagnosis = params.diagnosis;
-    if (params.treatmentPlan !== undefined) this._treatmentPlan = params.treatmentPlan;
-    if (params.prescriptionItems !== undefined) this._prescriptionItems = params.prescriptionItems;
-    if (params.followUpDays !== undefined) this._followUpDays = params.followUpDays;
+    if (params.treatmentPlan !== undefined)
+      this._treatmentPlan = params.treatmentPlan;
+    if (params.prescriptionItems !== undefined)
+      this._prescriptionItems = params.prescriptionItems;
+    if (params.followUpDays !== undefined)
+      this._followUpDays = params.followUpDays;
     this.markAsUpdated();
   }
 

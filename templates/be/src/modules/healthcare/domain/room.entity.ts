@@ -1,4 +1,7 @@
-import { BaseEntity, BaseEntityProps } from '../../../core/database/base.entity';
+import {
+  BaseEntity,
+  BaseEntityProps,
+} from '../../../core/database/base.entity';
 import { RoomDto } from '@repo/contracts';
 
 export interface RoomProps extends BaseEntityProps {
@@ -46,7 +49,8 @@ export class RoomEntity extends BaseEntity {
   }): void {
     if (params.roomNumber !== undefined) this._roomNumber = params.roomNumber;
     if (params.name !== undefined) this._name = params.name;
-    if (params.description !== undefined) this._description = params.description;
+    if (params.description !== undefined)
+      this._description = params.description;
     if (params.isActive !== undefined) this._isActive = params.isActive;
     this.markAsUpdated();
   }

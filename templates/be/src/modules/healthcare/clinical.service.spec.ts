@@ -80,9 +80,12 @@ describe('ClinicalService', () => {
     const updatedTicket = await repo.findQueueTicketById(ticket.id);
     expect(updatedTicket!.status).toBe(QueueStatus.COMPLETED);
 
-    const medicalRecord = await clinicalService.getMedicalRecordByPatientId('pat-001');
+    const medicalRecord =
+      await clinicalService.getMedicalRecordByPatientId('pat-001');
     expect(medicalRecord.consultations.length).toBe(1);
-    expect(medicalRecord.consultations[0].diagnosis).toBe('Đau nửa đầu Migraine cơn cấp');
+    expect(medicalRecord.consultations[0].diagnosis).toBe(
+      'Đau nửa đầu Migraine cơn cấp',
+    );
   });
 
   it('should enforce Consultation Singularity: reject duplicate consultation for same appointment', async () => {

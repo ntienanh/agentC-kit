@@ -147,68 +147,75 @@ export class InMemoryHealthcareRepository {
     this.dailyQueueCounters.clear();
   }
 
-  async findAllDoctors(): Promise<DoctorEntity[]> {
-    return Array.from(this.doctors.values());
+  findAllDoctors(): Promise<DoctorEntity[]> {
+    return Promise.resolve(Array.from(this.doctors.values()));
   }
 
-  async findDoctorById(id: string): Promise<DoctorEntity | null> {
-    return this.doctors.get(id) ?? null;
+  findDoctorById(id: string): Promise<DoctorEntity | null> {
+    return Promise.resolve(this.doctors.get(id) ?? null);
   }
 
-  async saveDoctor(doctor: DoctorEntity): Promise<DoctorEntity> {
+  saveDoctor(doctor: DoctorEntity): Promise<DoctorEntity> {
     this.doctors.set(doctor.id, doctor);
-    return doctor;
+    return Promise.resolve(doctor);
   }
 
-  async deleteDoctor(id: string): Promise<void> {
+  deleteDoctor(id: string): Promise<void> {
     this.doctors.delete(id);
+    return Promise.resolve();
   }
 
-  async findAllServices(): Promise<ClinicServiceEntity[]> {
-    return Array.from(this.services.values());
+  findAllServices(): Promise<ClinicServiceEntity[]> {
+    return Promise.resolve(Array.from(this.services.values()));
   }
 
-  async findServiceById(id: string): Promise<ClinicServiceEntity | null> {
-    return this.services.get(id) ?? null;
+  findServiceById(id: string): Promise<ClinicServiceEntity | null> {
+    return Promise.resolve(this.services.get(id) ?? null);
   }
 
-  async saveService(service: ClinicServiceEntity): Promise<ClinicServiceEntity> {
+  saveService(service: ClinicServiceEntity): Promise<ClinicServiceEntity> {
     this.services.set(service.id, service);
-    return service;
+    return Promise.resolve(service);
   }
 
-  async findAllRooms(): Promise<RoomEntity[]> {
-    return Array.from(this.rooms.values());
+  findAllRooms(): Promise<RoomEntity[]> {
+    return Promise.resolve(Array.from(this.rooms.values()));
   }
 
-  async findRoomById(id: string): Promise<RoomEntity | null> {
-    return this.rooms.get(id) ?? null;
+  findRoomById(id: string): Promise<RoomEntity | null> {
+    return Promise.resolve(this.rooms.get(id) ?? null);
   }
 
-  async saveRoom(room: RoomEntity): Promise<RoomEntity> {
+  saveRoom(room: RoomEntity): Promise<RoomEntity> {
     this.rooms.set(room.id, room);
-    return room;
+    return Promise.resolve(room);
   }
 
-  async findSchedulesByDoctorId(doctorId: string): Promise<DoctorScheduleEntity[]> {
-    return Array.from(this.schedules.values()).filter((s) => s.doctorId === doctorId);
+  findSchedulesByDoctorId(doctorId: string): Promise<DoctorScheduleEntity[]> {
+    return Promise.resolve(
+      Array.from(this.schedules.values()).filter(
+        (s) => s.doctorId === doctorId,
+      ),
+    );
   }
 
-  async saveSchedule(schedule: DoctorScheduleEntity): Promise<DoctorScheduleEntity> {
+  saveSchedule(schedule: DoctorScheduleEntity): Promise<DoctorScheduleEntity> {
     this.schedules.set(schedule.id, schedule);
-    return schedule;
+    return Promise.resolve(schedule);
   }
 
-  async findLeavesByDoctorId(doctorId: string): Promise<DoctorLeaveEntity[]> {
-    return Array.from(this.leaves.values()).filter((l) => l.doctorId === doctorId);
+  findLeavesByDoctorId(doctorId: string): Promise<DoctorLeaveEntity[]> {
+    return Promise.resolve(
+      Array.from(this.leaves.values()).filter((l) => l.doctorId === doctorId),
+    );
   }
 
-  async saveLeave(leave: DoctorLeaveEntity): Promise<DoctorLeaveEntity> {
+  saveLeave(leave: DoctorLeaveEntity): Promise<DoctorLeaveEntity> {
     this.leaves.set(leave.id, leave);
-    return leave;
+    return Promise.resolve(leave);
   }
 
-  async findAllAppointments(filter?: {
+  findAllAppointments(filter?: {
     doctorId?: string;
     date?: string;
     patientId?: string;
@@ -223,135 +230,147 @@ export class InMemoryHealthcareRepository {
     if (filter?.patientId) {
       result = result.filter((a) => a.patientId === filter.patientId);
     }
-    return result;
+    return Promise.resolve(result);
   }
 
-  async findAppointmentById(id: string): Promise<AppointmentEntity | null> {
-    return this.appointments.get(id) ?? null;
+  findAppointmentById(id: string): Promise<AppointmentEntity | null> {
+    return Promise.resolve(this.appointments.get(id) ?? null);
   }
 
-  async findAppointmentsByDoctorAndDate(
+  findAppointmentsByDoctorAndDate(
     doctorId: string,
     date: string,
   ): Promise<AppointmentEntity[]> {
-    return Array.from(this.appointments.values()).filter(
-      (a) => a.doctorId === doctorId && a.date === date,
+    return Promise.resolve(
+      Array.from(this.appointments.values()).filter(
+        (a) => a.doctorId === doctorId && a.date === date,
+      ),
     );
   }
 
-  async findAppointmentsByPatientAndDate(
+  findAppointmentsByPatientAndDate(
     patientId: string,
     date: string,
   ): Promise<AppointmentEntity[]> {
-    return Array.from(this.appointments.values()).filter(
-      (a) => a.patientId === patientId && a.date === date,
+    return Promise.resolve(
+      Array.from(this.appointments.values()).filter(
+        (a) => a.patientId === patientId && a.date === date,
+      ),
     );
   }
 
-  async findAppointmentsByDate(date: string): Promise<AppointmentEntity[]> {
-    return Array.from(this.appointments.values()).filter((a) => a.date === date);
+  findAppointmentsByDate(date: string): Promise<AppointmentEntity[]> {
+    return Promise.resolve(
+      Array.from(this.appointments.values()).filter((a) => a.date === date),
+    );
   }
 
-  async saveAppointment(appointment: AppointmentEntity): Promise<AppointmentEntity> {
+  saveAppointment(appointment: AppointmentEntity): Promise<AppointmentEntity> {
     this.appointments.set(appointment.id, appointment);
-    return appointment;
+    return Promise.resolve(appointment);
   }
 
-  async findQueueTicketById(id: string): Promise<QueueTicketEntity | null> {
-    return this.queueTickets.get(id) ?? null;
+  findQueueTicketById(id: string): Promise<QueueTicketEntity | null> {
+    return Promise.resolve(this.queueTickets.get(id) ?? null);
   }
 
-  async findQueueTicketsByDate(date: string): Promise<QueueTicketEntity[]> {
-    return Array.from(this.queueTickets.values()).filter((t) => t.date === date);
+  findQueueTicketsByDate(date: string): Promise<QueueTicketEntity[]> {
+    return Promise.resolve(
+      Array.from(this.queueTickets.values()).filter((t) => t.date === date),
+    );
   }
 
-  async findQueueTicketByAppointmentId(
+  findQueueTicketByAppointmentId(
     appointmentId: string,
   ): Promise<QueueTicketEntity | null> {
     for (const ticket of this.queueTickets.values()) {
       if (ticket.appointmentId === appointmentId) {
-        return ticket;
+        return Promise.resolve(ticket);
       }
     }
-    return null;
+    return Promise.resolve(null);
   }
 
-  async getNextQueueNumber(date: string): Promise<number> {
+  getNextQueueNumber(date: string): Promise<number> {
     const current = this.dailyQueueCounters.get(date) ?? 0;
     const next = current + 1;
     this.dailyQueueCounters.set(date, next);
-    return next;
+    return Promise.resolve(next);
   }
 
-  async saveQueueTicket(ticket: QueueTicketEntity): Promise<QueueTicketEntity> {
+  saveQueueTicket(ticket: QueueTicketEntity): Promise<QueueTicketEntity> {
     this.queueTickets.set(ticket.id, ticket);
-    return ticket;
+    return Promise.resolve(ticket);
   }
 
-  async findConsultationById(id: string): Promise<ConsultationEntity | null> {
-    return this.consultations.get(id) ?? null;
+  findConsultationById(id: string): Promise<ConsultationEntity | null> {
+    return Promise.resolve(this.consultations.get(id) ?? null);
   }
 
-  async findConsultationByAppointmentId(
+  findConsultationByAppointmentId(
     appointmentId: string,
   ): Promise<ConsultationEntity | null> {
     for (const c of this.consultations.values()) {
       if (c.appointmentId === appointmentId) {
-        return c;
+        return Promise.resolve(c);
       }
     }
-    return null;
+    return Promise.resolve(null);
   }
 
-  async saveConsultation(consultation: ConsultationEntity): Promise<ConsultationEntity> {
+  saveConsultation(
+    consultation: ConsultationEntity,
+  ): Promise<ConsultationEntity> {
     this.consultations.set(consultation.id, consultation);
-    return consultation;
+    return Promise.resolve(consultation);
   }
 
-  async findPrescriptionByConsultationId(
+  findPrescriptionByConsultationId(
     consultationId: string,
   ): Promise<PrescriptionEntity | null> {
     for (const p of this.prescriptions.values()) {
       if (p.consultationId === consultationId) {
-        return p;
+        return Promise.resolve(p);
       }
     }
-    return null;
+    return Promise.resolve(null);
   }
 
-  async savePrescription(prescription: PrescriptionEntity): Promise<PrescriptionEntity> {
+  savePrescription(
+    prescription: PrescriptionEntity,
+  ): Promise<PrescriptionEntity> {
     this.prescriptions.set(prescription.id, prescription);
-    return prescription;
+    return Promise.resolve(prescription);
   }
 
-  async findPaymentByAppointmentId(
+  findPaymentByAppointmentId(
     appointmentId: string,
   ): Promise<PaymentRecordEntity | null> {
     for (const p of this.payments.values()) {
       if (p.appointmentId === appointmentId) {
-        return p;
+        return Promise.resolve(p);
       }
     }
-    return null;
+    return Promise.resolve(null);
   }
 
-  async findPayments(): Promise<PaymentRecordEntity[]> {
-    return Array.from(this.payments.values());
+  findPayments(): Promise<PaymentRecordEntity[]> {
+    return Promise.resolve(Array.from(this.payments.values()));
   }
 
-  async savePayment(payment: PaymentRecordEntity): Promise<PaymentRecordEntity> {
+  savePayment(payment: PaymentRecordEntity): Promise<PaymentRecordEntity> {
     this.payments.set(payment.id, payment);
-    return payment;
+    return Promise.resolve(payment);
   }
 
-  async findMedicalRecordByPatientId(
+  findMedicalRecordByPatientId(
     patientId: string,
   ): Promise<MedicalRecordEntity | null> {
-    return this.medicalRecords.get(patientId) ?? null;
+    return Promise.resolve(this.medicalRecords.get(patientId) ?? null);
   }
 
-  async saveMedicalRecord(record: MedicalRecordEntity): Promise<MedicalRecordEntity> {
+  saveMedicalRecord(record: MedicalRecordEntity): Promise<MedicalRecordEntity> {
     this.medicalRecords.set(record.patientId, record);
-    return record;
+    return Promise.resolve(record);
   }
 }

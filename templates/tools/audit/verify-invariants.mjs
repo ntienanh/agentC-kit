@@ -731,6 +731,74 @@ class ArchitecturalInvariantAuditor {
     }
   }
 
+  // --------------------------------------------------------------------------
+  // CHECK 12: Strict NestJS 4-Layer Clean Architecture Enforcer
+  // --------------------------------------------------------------------------
+  checkNestJsCleanArchitecture() {
+    const srcDir = path.join(this.baseDir, 'src');
+    if (!fs.existsSync(srcDir)) return;
+
+    const modulesDir = path.join(srcDir, 'modules');
+    if (!fs.existsSync(modulesDir)) return;
+
+    const moduleEntries = fs.readdirSync(modulesDir, { withFileTypes: true })
+      .filter((d) => d.isDirectory())
+      .map((d) => d.name);
+
+    const requiredLayers = ['domain', 'application', 'infrastructure', 'presentation'];
+
+    for (const modName of moduleEntries) {
+      const modPath = path.join(modulesDir, modName);
+      this.stats.filesScanned++;
+
+      // 1. Enforce that flat controller/service files are NOT placed directly in src/modules/<modName>/
+      const modFiles = fs.readdirSync(modPath, { withFileTypes: true });
+      for (const entry of modFiles) {
+        if (entry.isFile()) {
+          const isModuleFile = entry.name.endsWith('.module.ts');
+          const isGitKeep = entry.name === '.gitkeep';
+          if (!isModuleFile && !isGitKeep) {
+            this.recordViolation(
+              'ANTI_FLAT_MODULE',
+              `NestJS 4-Layer Violation: Flat file '${entry.name}' in module root`,
+              path.join(modPath, entry.name),
+              1,
+              `File '${entry.name}' is placed directly in module root 'src/modules/${modName}/'`,
+              `Move '${entry.name}' into its respective Clean Arch layer: domain/, application/, infrastructure/, or presentation/`
+            );
+          }
+        }
+      }
+
+      // 2. Enforce that 4-layer directories exist AND contain actual source files (not just empty .gitkeep)
+      for (const layer of requiredLayers) {
+        const layerPath = path.join(modPath, layer);
+        if (!fs.existsSync(layerPath)) {
+          this.recordViolation(
+            'ANTI_MISSING_LAYER',
+            `NestJS 4-Layer Violation: Missing layer directory '${layer}'`,
+            modPath,
+            1,
+            `Module 'src/modules/${modName}' is missing required Clean Arch layer directory '${layer}/'`,
+            `Create 'src/modules/${modName}/${layer}/' and implement corresponding layer components`
+          );
+        } else {
+          const layerFiles = walkDir(layerPath, (_, name) => name.endsWith('.ts') && !name.endsWith('.gitkeep'));
+          if (layerFiles.length === 0) {
+            this.recordViolation(
+              'ANTI_EMPTY_LAYER',
+              `NestJS 4-Layer Violation: Layer '${layer}' has no TypeScript implementation`,
+              layerPath,
+              1,
+              `Layer 'src/modules/${modName}/${layer}/' contains no actual .ts code files (only empty or .gitkeep)`,
+              `Implement real domain/application/infrastructure/presentation logic inside 'src/modules/${modName}/${layer}/'`
+            );
+          }
+        }
+      }
+    }
+  }
+
   run() {
     console.log(`${BOLD}${CYAN}=== Automated Anti-Hallucination Architectural Linter ===${RESET}`);
     console.log(`Target Repository: ${YELLOW}${this.baseDir}${RESET}\n`);
@@ -746,6 +814,7 @@ class ArchitecturalInvariantAuditor {
     this.checkBarrelPollution();
     this.checkI18nDrift();
     this.checkIsolatedSpecs();
+    this.checkNestJsCleanArchitecture();
 
     return this.report();
   }

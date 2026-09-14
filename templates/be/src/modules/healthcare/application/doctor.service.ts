@@ -145,7 +145,9 @@ export class DoctorService {
     return saved.toDto();
   }
 
-  async findSchedulesByDoctorId(doctorId: string): Promise<DoctorScheduleDto[]> {
+  async findSchedulesByDoctorId(
+    doctorId: string,
+  ): Promise<DoctorScheduleDto[]> {
     const schedules = await this.repo.findSchedulesByDoctorId(doctorId);
     return schedules.map((s) => s.toDto());
   }

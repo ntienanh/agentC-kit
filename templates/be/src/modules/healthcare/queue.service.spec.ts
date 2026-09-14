@@ -107,7 +107,9 @@ describe('QueueService', () => {
       roomId: 'Room 101',
     });
 
-    const inConsultationTicket = await queueService.startConsultation(ticket.id);
+    const inConsultationTicket = await queueService.startConsultation(
+      ticket.id,
+    );
     expect(inConsultationTicket.status).toBe(QueueStatus.IN_CONSULTATION);
 
     const updatedAppt = await repo.findAppointmentById(appt.id);

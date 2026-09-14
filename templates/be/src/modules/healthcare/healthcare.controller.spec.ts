@@ -2,7 +2,12 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { HealthcareController } from './presentation/healthcare.controller';
 import { HealthcareModule } from './healthcare.module';
 import { InMemoryHealthcareRepository } from './infrastructure/persistence/in-memory-healthcare.repository';
-import { AppointmentStatus, PaymentMethod, PaymentStatus, QueueStatus } from '@repo/contracts';
+import {
+  AppointmentStatus,
+  PaymentMethod,
+  PaymentStatus,
+  QueueStatus,
+} from '@repo/contracts';
 
 describe('HealthcareController Integration', () => {
   let controller: HealthcareController;

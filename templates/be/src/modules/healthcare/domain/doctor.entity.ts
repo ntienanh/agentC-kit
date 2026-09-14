@@ -1,4 +1,7 @@
-import { BaseEntity, BaseEntityProps } from '../../../core/database/base.entity';
+import {
+  BaseEntity,
+  BaseEntityProps,
+} from '../../../core/database/base.entity';
 import { DoctorSpecialty, DoctorProfileDto } from '@repo/contracts';
 
 export interface DoctorProps extends BaseEntityProps {
@@ -77,8 +80,10 @@ export class DoctorEntity extends BaseEntity {
   }): void {
     if (params.fullName !== undefined) this._fullName = params.fullName;
     if (params.specialty !== undefined) this._specialty = params.specialty;
-    if (params.licenseNumber !== undefined) this._licenseNumber = params.licenseNumber;
-    if (params.phoneNumber !== undefined) this._phoneNumber = params.phoneNumber;
+    if (params.licenseNumber !== undefined)
+      this._licenseNumber = params.licenseNumber;
+    if (params.phoneNumber !== undefined)
+      this._phoneNumber = params.phoneNumber;
     if (params.email !== undefined) this._email = params.email;
     if (params.isActive !== undefined) this._isActive = params.isActive;
     if (params.roomNumber !== undefined) this._roomNumber = params.roomNumber;

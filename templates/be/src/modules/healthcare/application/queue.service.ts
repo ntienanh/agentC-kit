@@ -18,13 +18,9 @@ export class QueueService {
   constructor(private readonly repo: InMemoryHealthcareRepository) {}
 
   async checkIn(dto: CheckInAppointmentDto): Promise<QueueTicketDto> {
-    const appointment = await this.repo.findAppointmentById(
-      dto.appointmentId,
-    );
+    const appointment = await this.repo.findAppointmentById(dto.appointmentId);
     if (!appointment) {
-      throw new NotFoundException(
-        `Appointment ${dto.appointmentId} not found`,
-      );
+      throw new NotFoundException(`Appointment ${dto.appointmentId} not found`);
     }
     if (
       appointment.status !== AppointmentStatus.CONFIRMED &&
@@ -41,9 +37,7 @@ export class QueueService {
     const doctor = await this.repo.findDoctorById(appointment.doctorId);
     const doctorName = doctor ? doctor.fullName : 'Doctor';
 
-    const queueNumber = await this.repo.getNextQueueNumber(
-      appointment.date,
-    );
+    const queueNumber = await this.repo.getNextQueueNumber(appointment.date);
 
     const ticket = new QueueTicketEntity({
       queueNumber,

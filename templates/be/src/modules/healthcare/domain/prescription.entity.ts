@@ -1,4 +1,7 @@
-import { BaseEntity, BaseEntityProps } from '../../../core/database/base.entity';
+import {
+  BaseEntity,
+  BaseEntityProps,
+} from '../../../core/database/base.entity';
 import { IPrescriptionItemDto } from '@repo/contracts';
 import { BadRequestException } from '@nestjs/common';
 
@@ -39,7 +42,9 @@ export class PrescriptionEntity extends BaseEntity {
 
   updateItems(items: IPrescriptionItemDto[]): void {
     if (this._isLocked) {
-      throw new BadRequestException('Prescription is locked and cannot be modified.');
+      throw new BadRequestException(
+        'Prescription is locked and cannot be modified.',
+      );
     }
     this._items = items;
     this.markAsUpdated();

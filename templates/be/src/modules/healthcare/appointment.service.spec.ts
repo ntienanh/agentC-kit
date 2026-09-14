@@ -67,8 +67,10 @@ describe('AppointmentService', () => {
     expect(rejectedReason).toBeInstanceOf(ConflictException);
     expect(rejectedReason.message).toContain('SLOT_ALREADY_BOOKED');
 
-    const doctorAppointments =
-      await repo.findAppointmentsByDoctorAndDate('doc-nguyen-001', '2026-09-22');
+    const doctorAppointments = await repo.findAppointmentsByDoctorAndDate(
+      'doc-nguyen-001',
+      '2026-09-22',
+    );
     expect(doctorAppointments.length).toBe(1);
   });
 
