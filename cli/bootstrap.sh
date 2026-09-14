@@ -4,9 +4,17 @@
 # ==============================================================================
 set -eo pipefail
 
-KIT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-TARGET_DIR="${1:-.}"
+# Resolve KIT_ROOT dynamically (works both local and inside npx node_modules)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [ -f "${SCRIPT_DIR}/../AGENTS.md" ]; then
+  KIT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+elif [ -f "${SCRIPT_DIR}/../agentc-kit/AGENTS.md" ]; then
+  KIT_ROOT="$(cd "${SCRIPT_DIR}/../agentc-kit" && pwd)"
+else
+  KIT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+fi
 
+TARGET_DIR="${1:-.}"
 TARGET_DIR_ABS="$(cd "${TARGET_DIR}" && pwd)"
 
 echo "🚀 Bootstrapping AgentC Kernel Governance into: ${TARGET_DIR_ABS}"
