@@ -25,7 +25,21 @@ cp -r "${KIT_ROOT}/core/"* "${AGENTC_DIR}/core/"
 cp -r "${KIT_ROOT}/agents/"* "${AGENTC_DIR}/agents/"
 chmod +x "${AGENTC_DIR}/cli/agentc"
 
-# 2. Tạo thư mục kit-docs/ (LOCAL RUNTIME & CONTEXT)
+# 2. Tạo Root AGENTS.md Pointer cho tất cả các AI Agents tự động nhận diện
+cat << 'ROOT_AGENTS' > "${TARGET_DIR_ABS}/AGENTS.md"
+# 🤖 AgentC Governance & Execution Pointer
+
+> **ATTENTION ALL AI AGENTS (Antigravity, Claude Code, Cursor, Windsurf, Roo):**
+> This repository is strictly governed by the **AgentC Autonomous Kernel (v2.0)**.
+
+### 🔴 MANDATORY INSTRUCTIONS FOR AI AGENTS:
+1. **READ MASTER RULES:** Always refer to `/.agentc-kit/AGENTS.md` for the 5 Core Axioms and 5-Gate Lifecycle.
+2. **JIT SKILL DISCOVERY:** Execute `./.agentc-kit/cli/agentc match "<task>"` to discover JIT skills before starting tasks.
+3. **MECHANICAL EVIDENCE:** Run `./.agentc-kit/cli/agentc verify` after code changes. Never claim success without Exit Code `0`.
+4. **RUNTIME CONTEXT & SPECS:** Store PRDs, domain context, and scratch logs under `/kit-docs/` (GitIgnored).
+ROOT_AGENTS
+
+# 3. Tạo thư mục kit-docs/ (LOCAL RUNTIME & CONTEXT)
 KIT_DOCS_DIR="${TARGET_DIR_ABS}/kit-docs"
 mkdir -p "${KIT_DOCS_DIR}/specs"
 mkdir -p "${KIT_DOCS_DIR}/scratch"
@@ -35,7 +49,7 @@ if [ ! -f "${KIT_DOCS_DIR}/CONTEXT.md" ] && [ -f "${KIT_ROOT}/templates/kit-docs
   cp "${KIT_ROOT}/templates/kit-docs/CONTEXT.md.example" "${KIT_DOCS_DIR}/CONTEXT.md"
 fi
 
-# 3. Tự động thêm /kit-docs/ vào .gitignore của Target Repo
+# 4. Tự động thêm /kit-docs/ vào .gitignore của Target Repo
 GITIGNORE_PATH="${TARGET_DIR_ABS}/.gitignore"
 if [ -f "${GITIGNORE_PATH}" ]; then
   if ! grep -q "kit-docs" "${GITIGNORE_PATH}"; then
@@ -54,7 +68,8 @@ fi
 
 echo -e "\n🎉 Done! AgentC Kit is now active in ${TARGET_DIR_ABS}"
 echo "--------------------------------------------------------"
-echo "🤖 Core Engine:  .agentc-kit/ (AGENTS.md & CLI)"
+echo "🤖 Root Pointer: AGENTS.md (Auto-read by all AI Agents)"
+echo "⚙️ Core Engine:  .agentc-kit/ (Rules, Engine & CLI)"
 echo "📝 Local Docs:   kit-docs/ (CONTEXT.md, specs, scratch - GitIgnored)"
 echo "--------------------------------------------------------"
 echo "👉 Lệnh sử dụng ở target repo: ./.agentc-kit/cli/agentc verify"
