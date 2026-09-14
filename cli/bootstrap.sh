@@ -32,6 +32,12 @@ done
 
 TARGET_DIR_ABS="$(cd "${TARGET_DIR}" && pwd)"
 
+# Auto-detect empty blank repo (no package.json) and default to NestJS starter template
+if [ -z "${TEMPLATE_OPTION}" ] && [ ! -f "${TARGET_DIR_ABS}/package.json" ]; then
+  echo "ℹ️ Empty repository detected (no package.json). Auto-selecting default starter template: 'be' (NestJS Backend)."
+  TEMPLATE_OPTION="be"
+fi
+
 echo "🚀 Bootstrapping AgentC Kernel Governance into: ${TARGET_DIR_ABS}"
 
 # 1. Create .agentc-kit directory (CORE ENGINE)
