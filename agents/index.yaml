@@ -82,7 +82,7 @@ skills:
 
   - name: context-budgeting
     gates: [2, 3, 4]
-    keywords: [context, budget, compress, log, error, token, truncate, root cause, stack trace, 20 lines, 2000 tokens, summarize, nén, log compression]
+    keywords: [context, budget, compress, log, error, token, truncate, root cause, stack trace, 20 lines, 2000 tokens, summarize, log compression]
     path: agents/skills/context-budgeting/SKILL.md
 
   - name: verification-before-completion

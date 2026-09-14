@@ -1,18 +1,16 @@
 ---
 name: clean-code
 description: >-
-  Kỹ năng Lập trình Sạch theo Nguyên lý Clean Code của Robert C. Martin (Uncle Bob).
-  Kích hoạt tại Gate 2 (Wire-Up & Impl) và Gate 3 (Security & Audit) khi viết code mới,
-  thẩm định pull request hoặc tái cấu trúc nợ kỹ thuật. Cưỡng chế quy chuẩn đặt tên có chủ đích,
-  hàm đơn nhiệm (Single Responsibility) một cấp độ trừu tượng (SLAP), bố cục tòa soạn báo (Newspaper Metaphor),
-  triệt tiêu comment rác (Invariant 31) và xử lý ngoại lệ an toàn không null.
+  Clean Coding Standards based on Robert C. Martin (Uncle Bob) principles.
+  Enforces intention-revealing names, Single Responsibility (SRP), Single Level of Abstraction (SLAP),
+  Newspaper Metaphor formatting, Zero Garbage Comments (Invariant 31), and robust exception handling.
 inputs:
   - path: "src/**"
     required: true
-    description: "Mã nguồn đang phát triển, tệp diff hoặc module cần tái cấu trúc"
+    description: "Active codebase, diff files, or modules undergoing refactoring"
 outputs:
   - path: "src/**"
-    description: "Mã nguồn sạch, tự tài liệu hóa (self-documenting), không comment rác, tuân thủ 100% Invariants"
+    description: "Clean, self-documenting code without garbage comments, 100% mechanically compliant"
 tools:
   - view_file
   - replace_file_content
@@ -21,43 +19,43 @@ tools:
 
 # Section 1: Overview & Objective
 
-Kỹ năng `clean-code` chuyển hóa tư duy từ "viết code chạy được" (*code that works*) thành "viết code sạch, dễ đọc và bền vững" (*code that is clean*). Dựa trên triết lý của Robert C. Martin (Uncle Bob) và Grady Booch:
+The `clean-code` skill elevates engineering from *code that works* to *code that is clean, readable, and maintainable*. Grounded in the philosophy of Robert C. Martin (Uncle Bob) and Grady Booch:
 > *"Code is clean if it can be read, and enhanced by a developer other than its original author."*
 
-Kỹ năng này thiết lập hệ thống chuẩn mực kỹ thuật định lượng cho lập trình viên và AI subagents:
-1. **Tự tài liệu hóa (Self-Documenting):** Code tự bộc lộ rõ mục đích qua tên gọi và cấu trúc, loại bỏ hoàn toàn nhu cầu viết comment giải thích (Invariant 31).
-2. **Đơn nhiệm & Đơn cấp độ trừu tượng (SRP & SLAP):** Mỗi hàm chỉ làm 1 việc và chỉ hoạt động ở một tầng trừu tượng duy nhất.
-3. **Bố cục Tòa soạn Báo (The Newspaper Metaphor):** Cấu trúc file mã nguồn từ khái quát cấp cao đến chi tiết triển khai cấp thấp.
-4. **Xử lý Ngoại lệ An toàn:** Ưu tiên Exceptions có ngữ cảnh, cấm return `null` và truyền `null` tùy tiện.
+This skill enforces quantitative technical standards for developers and AI subagents:
+1. **Self-Documenting Code:** Code expresses its intent through naming and structure, eliminating explanatory comments (Invariant 31).
+2. **Single Responsibility & SLAP:** Functions do one thing and operate at a single level of abstraction.
+3. **Newspaper Metaphor:** Source files flow from high-level concepts down to low-level implementation details.
+4. **Robust Exception Handling:** Prefer contextual Exceptions over error codes; forbid arbitrary `null` returns and parameters.
 
 ---
 
 # Section 2: Decision Matrix
 
-| Trụ Cột Kỹ Thuật | Dấu Hiệu Vi Phạm (Code Smells) | Quy Chuẩn Bắt Buộc (Clean Code Standard) | Hành Động Kỹ Thuật |
+| Technical Pillar | Anti-Pattern (Code Smell) | Clean Code Standard | Technical Action |
 | :--- | :--- | :--- | :--- |
-| **Meaningful Names** | Tên viết tắt khó hiểu (`d`, `fn`), tên gây hiểu nhầm (`userList` nhưng là `Map`), tên mơ hồ (`Data`, `Info`). | Tên bộc lộ rõ mục đích (`elapsedDays`), lớp là danh từ (`PaymentProcessor`), phương thức là động từ (`processTransaction`). | Đổi tên biến/hàm/lớp mang tính biểu cảm cao, dễ grep tìm kiếm. |
-| **Small Functions & SLAP** | Hàm dài quá 20 dòng, lồng ghép nhiều vòng lặp `if/else`, trộn lẫn business logic với regex/parsing. | Hàm $\le 20$ dòng, chỉ làm 1 việc duy nhất (Single Responsibility), duy trì Single Level of Abstraction (SLAP). | Trích xuất hàm con (Extract Method), chuyển chi tiết hạ tầng xuống helper riêng biệt. |
-| **Arguments Count** | Hàm nhận $\ge 3$ tham số rời rạc hoặc cờ boolean (`flag: boolean`) điều khiển rẽ nhánh. | Hàm $0$ tham số là lý tưởng, $1-2$ tham số là chấp nhận được. Tuyệt đối cấm cờ boolean làm tham số. | Đóng gói tham số thành DTO/Value Object; tách hàm rẽ nhánh thành 2 hàm độc lập. |
-| **Zero Comments (INV-31)** | Viết comment giải thích logic, comment mã cũ bị comment-out, hoặc header javadoc rỗng. | Mã nguồn tự giải thích (Self-documenting code). "Đừng comment code tồi — hãy viết lại nó". | Xóa comment, trích xuất điều kiện phức tạp thành hàm có tên rõ nghĩa. |
-| **Newspaper Formatting** | Khai báo hàm helper chi tiết ở đầu file, hàm điều phối chính bị đẩy xuống đáy file. | Mô hình Tòa soạn Báo: Đỉnh file chứa hàm public điều phối cấp cao; đáy file chứa hàm private chi tiết. | Sắp xếp lại thứ tự khai báo theo chiều dọc từ trên xuống dưới (Step-down rule). |
-| **Error Handling & Null** | Trả về error code âm, kiểm tra `null` rải rác khắp nơi, return `null` khi không tìm thấy dữ liệu. | Dùng Custom Exceptions thay vì error codes; không bao giờ return `null` hoặc truyền `null` vào tham số. | Ném Domain Exception hoặc trả về Null Object / mảng rỗng `[]`. |
+| **Meaningful Names** | Cryptic abbreviations (`d`, `fn`), misleading names (`userList` for a `Map`), vague terms (`Data`, `Info`). | Intention-revealing names (`elapsedDays`), noun classes (`PaymentProcessor`), verb methods (`processTransaction`). | Rename symbols to expressive, grep-friendly identifiers. |
+| **Small Functions & SLAP** | Functions > 20 lines, nested `if/else`, mixing business logic with parsing/regex. | Functions $\le 20$ lines, Single Responsibility (SRP), Single Level of Abstraction (SLAP). | Extract methods; push infrastructure details to dedicated helpers. |
+| **Arguments Count** | Functions accepting $\ge 3$ parameters or boolean control flags (`flag: boolean`). | Ideal: 0 args, acceptable: 1-2 args. Forbid boolean flags as parameters. | Encapsulate parameters into DTOs/Value Objects; split branching flags into discrete functions. |
+| **Zero Comments (INV-31)** | Explanatory comments, commented-out dead code, or empty Javadoc headers. | Self-documenting code. *"Don't comment bad code — rewrite it."* | Remove comments; extract complex expressions into well-named functions. |
+| **Newspaper Formatting** | Low-level helpers at file top; main orchestration functions buried at bottom. | Newspaper Metaphor: High-level public functions at top; low-level private helpers at bottom. | Reorder function declarations vertically (Step-down rule). |
+| **Error Handling & Null** | Returning negative error codes, scattered `null` checks, returning `null` when missing data. | Custom Domain Exceptions; never return or accept `null`. | Throw Domain Exception or return Null Object / empty array `[]`. |
 
 ---
 
 # Section 3: Step-by-Step Execution Protocol
 
-1. **Đặt Tên Có Chủ Đích & Tự Tài Liệu Hóa (Intention-Revealing Naming):**
-   - Đặt tên biến trả lời rõ: *Tại sao nó tồn tại? Nó làm gì? Nó được dùng như thế nào?*
-   - Thay thế các biểu thức logic phức tạp bằng hàm kiểm tra mang tính khẳng định:
+1. **Intention-Revealing Naming:**
+   - Name variables to answer: *Why does it exist? What does it do? How is it used?*
+   - Replace complex conditions with expressive boolean functions:
      ```typescript
      if (user.isEligibleForDiscount(currentDate)) {
        applyDiscount(user);
      }
      ```
-   - Cấm thêm tiền tố hoặc hậu tố thừa thãi (`IUser`, `UserDTOType` khi ngữ cảnh đã rõ ràng).
+   - Avoid redundant prefixes or suffixes (`IUser`, `UserDTOType` when context is clear).
 
-2. **Áp Dụng Quy Tắc Bậc Thang (The Step-Down Rule & SLAP):**
+2. **Apply The Step-Down Rule & SLAP:**
    - Mỗi hàm chỉ xử lý logic tại một tầng trừu tượng duy nhất.
    - Các hàm đọc theo trình tự bậc thang từ trên xuống dưới:
      * Hàm A gọi hàm B.
